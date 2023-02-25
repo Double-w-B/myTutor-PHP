@@ -1,0 +1,118 @@
+main {
+  &.sign-up {
+    width: 85%;
+    height: calc(100% - 64px - 34px);
+    margin: 0 auto;
+    display: flex;
+
+    .cta {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0 0 5rem;
+
+      h1 {
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: $white;
+      }
+
+      p {
+        color: $white;
+      }
+    }
+
+    .form-data {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-trial {
+        width: 75%;
+        height: 50px;
+        margin: 0 auto 2rem auto;
+        display: grid;
+        place-items: center;
+        border-radius: 0.5rem;
+        background-color: $neutral-dark-blue;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+        p {
+          color: $white;
+          font-size: 0.9rem;
+          font-weight: bold;
+
+          span {
+            font-weight: normal;
+          }
+        }
+      }
+
+      form {
+        width: 75%;
+        height: 65%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        background-color: $white;
+        border-radius: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+        input {
+          height: 45px;
+          outline: none;
+          font-size: 1rem;
+          border: 1px solid $neutral-grayish-blue;
+          border-radius: 0.3rem;
+          padding: 0 1.5rem;
+          transition: 0.2s ease-in-out;
+
+          &:focus {
+            border-color: $neutral-dark-blue;
+          }
+        }
+
+        button {
+          height: 45px;
+          text-transform: uppercase;
+          color: $white;
+          background-color: $primary-green;
+          border-radius: 0.3rem;
+          border: none;
+          cursor: pointer;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+          &:active {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+              rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+              rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+          }
+        }
+
+        p {
+          text-align: center;
+          font-size: 0.7rem;
+          color: $neutral-dark-blue;
+
+          a {
+            font-weight: bold;
+            text-decoration: none;
+            color: $primary-red;
+          }
+        }
+      }
+    }
+  }
+}

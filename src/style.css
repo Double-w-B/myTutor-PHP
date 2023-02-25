@@ -1,0 +1,258 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: hsl(0deg, 100%, 74%);
+  background-image: url("./assets/bg-intro-desktop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  width: 100%;
+  height: calc(100% - 64px - 34px);
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+main.home-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  overflow-y: scroll;
+  display: grid;
+  gap: 2rem;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+main.home-page .tutorial {
+  height: 380px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.home-page .tutorial picture {
+  width: 100%;
+  height: 150px;
+}
+main.home-page .tutorial picture img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-bottom: 1px solid hsl(246deg, 25%, 77%);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+main.home-page .tutorial-details__content {
+  padding: 1rem;
+}
+main.home-page .tutorial-details__content h4 {
+  margin-bottom: 0.5rem;
+  color: hsl(248deg, 32%, 49%);
+}
+main.home-page .tutorial-details__content p {
+  font-size: 0.8rem;
+  color: hsl(246deg, 25%, 77%);
+}
+main.home-page .tutorial-details__content__info {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+}
+main.home-page .tutorial-details__content__info p {
+  color: black;
+}
+main.home-page .tutorial-details__content__info p i {
+  margin-right: 0.3rem;
+  color: hsl(0deg, 100%, 74%);
+}
+main.home-page .tutorial-details__content__info p:first-child {
+  margin-right: 1rem;
+}
+main.home-page .tutorial-add-icon {
+  width: 40px;
+  height: 40px;
+  margin: auto 0.5rem 0.5rem 0;
+  display: grid;
+  place-content: center;
+  align-self: end;
+}
+main.home-page .tutorial-add-icon i {
+  font-size: 2rem;
+  color: hsl(248deg, 32%, 49%);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+main.home-page .tutorial-add-icon i:active {
+  transform: scale(0.8);
+}
+
+header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  padding: 0 2rem;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+header .logo {
+  height: 100%;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  display: grid;
+  text-transform: uppercase;
+  place-items: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+header .login {
+  text-transform: uppercase;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+header .login a {
+  color: inherit;
+  text-decoration: none;
+  color: hsl(249deg, 10%, 26%);
+}
+
+footer {
+  width: 100%;
+  height: 34px;
+  display: grid;
+  place-content: center;
+  font-size: 0.7rem;
+  color: rgb(255, 255, 255);
+}
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  font-size: 0.7rem;
+  color: hsl(248deg, 32%, 49%);
+}
+
+main.sign-up {
+  width: 85%;
+  height: calc(100% - 64px - 34px);
+  margin: 0 auto;
+  display: flex;
+}
+main.sign-up .cta {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 5rem;
+}
+main.sign-up .cta h1 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+}
+main.sign-up .cta p {
+  color: rgb(255, 255, 255);
+}
+main.sign-up .form-data {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main.sign-up .form-data-trial {
+  width: 75%;
+  height: 50px;
+  margin: 0 auto 2rem auto;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  background-color: hsl(249deg, 10%, 26%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data-trial p {
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+main.sign-up .form-data-trial p span {
+  font-weight: normal;
+}
+main.sign-up .form-data form {
+  width: 75%;
+  height: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data form input {
+  height: 45px;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+}
+main.sign-up .form-data form input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+main.sign-up .form-data form button {
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+main.sign-up .form-data form p {
+  text-align: center;
+  font-size: 0.7rem;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-up .form-data form p a {
+  font-weight: bold;
+  text-decoration: none;
+  color: hsl(0deg, 100%, 74%);
+}
+
+/*# sourceMappingURL=style.css.map */
