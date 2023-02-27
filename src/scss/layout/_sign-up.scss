@@ -68,17 +68,37 @@ main {
           rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
           rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
-        input {
-          height: 45px;
-          outline: none;
-          font-size: 1rem;
-          border: 1px solid $neutral-grayish-blue;
-          border-radius: 0.3rem;
-          padding: 0 1.5rem;
-          transition: 0.2s ease-in-out;
+        div {
+          width: 100%;
+          min-height: 65px;
+          position: relative;
 
-          &:focus {
-            border-color: $neutral-dark-blue;
+          input {
+            width: 100%;
+            height: 45px;
+            outline: none;
+            font-size: 1rem;
+            border: 1px solid $neutral-grayish-blue;
+            border-radius: 0.3rem;
+            padding: 0 1.5rem;
+            transition: 0.2s ease-in-out;
+            background-color: transparent;
+
+            &:focus {
+              border-color: $neutral-dark-blue;
+            }
+          }
+
+          p {
+            font-size: 0.8rem;
+            color: $primary-red;
+          }
+
+          img {
+            width: 20px;
+            position: absolute;
+            top: 12px;
+            right: 1rem;
           }
         }
 
@@ -108,7 +128,6 @@ main {
 
           a {
             font-weight: bold;
-            text-decoration: none;
             color: $primary-red;
           }
         }

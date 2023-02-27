@@ -5,6 +5,12 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
   -webkit-tap-highlight-color: transparent;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 body {
@@ -115,6 +121,7 @@ header {
   width: 100%;
   height: 64px;
   display: flex;
+  align-items: center;
   padding: 0 2rem;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.4);
@@ -131,17 +138,26 @@ header .logo {
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
-header .login {
-  text-transform: uppercase;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-header .login a {
-  color: inherit;
+header a {
   text-decoration: none;
-  color: hsl(249deg, 10%, 26%);
+  color: rgb(255, 255, 255);
+  transition: 0.25s linear;
+}
+header a:active {
+  transform: scale(0.9);
+}
+header a:active span {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+header a span {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s linear;
+  background-color: hsl(249deg, 10%, 26%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 footer {
@@ -219,7 +235,13 @@ main.sign-up .form-data form {
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-main.sign-up .form-data form input {
+main.sign-up .form-data form div {
+  width: 100%;
+  min-height: 65px;
+  position: relative;
+}
+main.sign-up .form-data form div input {
+  width: 100%;
   height: 45px;
   outline: none;
   font-size: 1rem;
@@ -227,9 +249,20 @@ main.sign-up .form-data form input {
   border-radius: 0.3rem;
   padding: 0 1.5rem;
   transition: 0.2s ease-in-out;
+  background-color: transparent;
 }
-main.sign-up .form-data form input:focus {
+main.sign-up .form-data form div input:focus {
   border-color: hsl(249deg, 10%, 26%);
+}
+main.sign-up .form-data form div p {
+  font-size: 0.8rem;
+  color: hsl(0deg, 100%, 74%);
+}
+main.sign-up .form-data form div img {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  right: 1rem;
 }
 main.sign-up .form-data form button {
   height: 45px;
@@ -251,7 +284,6 @@ main.sign-up .form-data form p {
 }
 main.sign-up .form-data form p a {
   font-weight: bold;
-  text-decoration: none;
   color: hsl(0deg, 100%, 74%);
 }
 

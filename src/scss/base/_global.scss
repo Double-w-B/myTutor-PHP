@@ -6,6 +6,12 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
   -webkit-tap-highlight-color: transparent;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 body {
@@ -21,7 +27,6 @@ main {
   width: 100%;
   height: calc(100% - 64px - 34px);
 }
-
 
 .no-select {
   -webkit-touch-callout: none;

@@ -9,12 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>MYTUTOR</title>
 </head>
 
 <body>
     <header>
         <div class="logo no-select">mytutor</div>
-        <div class="login"><a href="login.php">login</a></div>
+        <?php
+        if (isset($_SESSION['signUpSuccess'])) {
+            echo "<a href='sign-in.php'><span class='sign-in'>sign in</span></a>";
+        }
+        if (isset($_SESSION['signInSuccess'])) {
+            echo "<a href='sign-out.logic.php'><span class='sign-in'>sign out</span></a>";
+        }
+        if (!isset($_SESSION['signUpSuccess']) && !isset($_SESSION['signInSuccess'])) {
+            echo "<a href='sign-up.php'><span class='sign-in'>sign up</span></a>";
+        }
+        ?>
     </header>
