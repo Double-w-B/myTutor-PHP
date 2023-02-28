@@ -1,5 +1,3 @@
-<?php include "./config/database.php" ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,17 +11,3 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo no-select">mytutor</div>
-        <?php
-        if (isset($_SESSION['signUpSuccess'])) {
-            echo "<a href='sign-in.php'><span class='sign-in'>sign in</span></a>";
-        }
-        if (isset($_SESSION['signInSuccess'])) {
-            echo "<a href='sign-out.logic.php'><span class='sign-in'>sign out</span></a>";
-        }
-        if (!isset($_SESSION['signUpSuccess']) && !isset($_SESSION['signInSuccess'])) {
-            echo "<a href='sign-up.php'><span class='sign-in'>sign up</span></a>";
-        }
-        ?>
-    </header>

@@ -2,6 +2,11 @@
 <?php require_once "utils.php" ?>
 <?php include "./inc/head.php" ?>
 
+<header>
+    <div class="logo no-select">mytutor</div>
+    <a href='sign-in.php'><span class='sign-in'>sign in</span></a>
+</header>
+
 <main class="sign-up">
 
     <div class="cta">
@@ -15,7 +20,7 @@
         <div class="form-data-trial">
             <p>Try it free 7 days <span>then $20/mo. thereafter</span></p>
         </div>
-        <form method="POST">
+        <form action="sign-up.php" method="POST">
             <div>
                 <input type="text" name="name" placeholder="Name" onfocus="this.placeholder=''" onblur="this.placeholder='Name'" autocomplete="off" value="<?php rememberInputValue('input_name') ?>">
                 <?php showInputError("e_name") ?>

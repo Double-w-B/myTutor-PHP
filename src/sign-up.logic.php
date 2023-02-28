@@ -79,7 +79,7 @@ if (isset($_POST['email'])) {
     require_once "./config/database.php";
     try {
         //! check email in DB
-        $sql = 'SELECT id FROM users WHERE email=?';
+        $sql = 'SELECT * FROM users WHERE email=?';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
         $users = $stmt->fetchAll();
