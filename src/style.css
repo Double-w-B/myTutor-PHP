@@ -24,7 +24,7 @@ body {
 
 main {
   width: 100%;
-  height: calc(100% - 64px - 34px);
+  height: calc(100% - 64px - 24px);
 }
 
 .no-select {
@@ -41,8 +41,63 @@ main {
   user-select: none;
 }
 
-main.home-page {
+.dashboard {
+  display: flex;
+  height: calc(100% - 64px - 24px);
+}
+.dashboard main.home-page {
   width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+  padding-top: 1rem;
+}
+.dashboard main.home-page.active-nav {
+  width: calc(100% - 300px);
+}
+.dashboard main article {
+  width: calc(100% - 4rem);
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.dashboard main article p {
+  font-size: 1.2rem;
+  color: hsl(249deg, 10%, 26%);
+}
+.dashboard main article p span {
+  color: hsl(248deg, 32%, 49%);
+  font-weight: bold;
+}
+.dashboard main article p a {
+  color: hsl(248deg, 32%, 49%);
+  text-decoration: underline;
+}
+.dashboard main article form {
+  width: 30px;
+  height: 30px;
+  margin-left: 2rem;
+}
+.dashboard main article form button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+.dashboard main article form button img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.dashboard main article form button img:active {
+  transform: scale(0.9);
+}
+.dashboard main section {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   padding: 1rem 3rem;
   overflow-y: scroll;
@@ -51,70 +106,115 @@ main.home-page {
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
-main.home-page .tutorial {
+.dashboard main section .tutorial {
   height: 380px;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-main.home-page .tutorial picture {
+.dashboard main section .tutorial picture {
   width: 100%;
-  height: 150px;
+  height: 180px;
 }
-main.home-page .tutorial picture img {
+.dashboard main section .tutorial picture img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   border-bottom: 1px solid hsl(246deg, 25%, 77%);
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
-main.home-page .tutorial-details__content {
-  padding: 1rem;
+.dashboard main section .tutorial-details__content {
+  padding: 1rem 0;
 }
-main.home-page .tutorial-details__content h4 {
+.dashboard main section .tutorial-details__content h4 {
   margin-bottom: 0.5rem;
   color: hsl(248deg, 32%, 49%);
 }
-main.home-page .tutorial-details__content p {
+.dashboard main section .tutorial-details__content p {
   font-size: 0.8rem;
   color: hsl(246deg, 25%, 77%);
 }
-main.home-page .tutorial-details__content__info {
+.dashboard main section .tutorial-details__content__info {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   display: flex;
 }
-main.home-page .tutorial-details__content__info p {
+.dashboard main section .tutorial-details__content__info p {
   color: black;
+  display: flex;
+  align-items: center;
 }
-main.home-page .tutorial-details__content__info p i {
+.dashboard main section .tutorial-details__content__info p img {
+  width: 20px;
   margin-right: 0.3rem;
-  color: hsl(0deg, 100%, 74%);
 }
-main.home-page .tutorial-details__content__info p:first-child {
+.dashboard main section .tutorial-details__content__info p:first-child {
   margin-right: 1rem;
 }
-main.home-page .tutorial-add-icon {
-  width: 40px;
-  height: 40px;
-  margin: auto 0.5rem 0.5rem 0;
-  display: grid;
-  place-content: center;
-  align-self: end;
+.dashboard main section .tutorial form {
+  width: 100%;
+  height: 35px;
+  margin: auto 0 0 0;
 }
-main.home-page .tutorial-add-icon i {
-  font-size: 2rem;
-  color: hsl(248deg, 32%, 49%);
-  transition: 0.3s ease-in-out;
+.dashboard main section .tutorial form button {
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-main.home-page .tutorial-add-icon i:active {
-  transform: scale(0.8);
+.dashboard main section .tutorial form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard nav {
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.3s linear;
+  padding: 2rem 0 0 0;
+}
+.dashboard nav ul li a {
+  visibility: hidden;
+  opacity: 0;
+}
+.dashboard nav * {
+  font-size: 0;
+}
+.dashboard nav.active {
+  width: 300px;
+}
+.dashboard nav.active * {
+  font-size: initial;
+}
+.dashboard nav.active ul {
+  width: 100%;
+  list-style-type: none;
+}
+.dashboard nav.active ul li {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.dashboard nav.active ul li a {
+  width: 100%;
+  display: block;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: hsl(249deg, 10%, 26%);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
+.dashboard nav.active ul li a:hover {
+  color: rgb(255, 255, 255);
 }
 
 header {
@@ -126,6 +226,14 @@ header {
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.4);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s linear;
+}
+header.active-nav {
+  box-shadow: none;
+  padding-right: 250px;
+}
+header.active-nav button img {
+  width: 35px;
 }
 header .logo {
   height: 100%;
@@ -159,14 +267,31 @@ header a span {
   background-color: hsl(249deg, 10%, 26%);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+header button {
+  padding: 0.5rem;
+  display: grid;
+  place-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+header button img {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.4s linear;
+}
+header button img:active {
+  transform: scale(0.9);
+}
 
 footer {
   width: 100%;
-  height: 34px;
+  height: 24px;
   display: grid;
   place-content: center;
   font-size: 0.7rem;
   color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 footer a {
   font-weight: bold;
@@ -178,7 +303,7 @@ footer a {
 
 main.sign-up {
   width: 85%;
-  height: calc(100% - 64px - 34px);
+  height: calc(100% - 64px - 24px);
   margin: 0 auto;
   display: flex;
 }
@@ -283,6 +408,106 @@ main.sign-up .form-data form p {
   color: hsl(249deg, 10%, 26%);
 }
 main.sign-up .form-data form p a {
+  font-weight: bold;
+  color: hsl(0deg, 100%, 74%);
+}
+
+main.sign-in {
+  width: 85%;
+  height: calc(100% - 64px - 24px);
+  margin: 0 auto;
+  display: flex;
+}
+main.sign-in h2 {
+  text-align: center;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .cta {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 5rem;
+}
+main.sign-in .cta h1 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+}
+main.sign-in .cta p {
+  color: rgb(255, 255, 255);
+}
+main.sign-in .cta p:first-of-type {
+  margin-bottom: 1rem;
+}
+main.sign-in .form-data {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main.sign-in .form-data form {
+  width: 75%;
+  height: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-in .form-data form div {
+  width: 100%;
+  min-height: 65px;
+  position: relative;
+}
+main.sign-in .form-data form div input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+}
+main.sign-in .form-data form div input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .form-data form div p {
+  font-size: 0.8rem;
+  color: hsl(0deg, 100%, 74%);
+}
+main.sign-in .form-data form div img {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  right: 1rem;
+}
+main.sign-in .form-data form button {
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-in .form-data form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+main.sign-in .form-data form p {
+  text-align: center;
+  font-size: 0.7rem;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .form-data form p a {
   font-weight: bold;
   color: hsl(0deg, 100%, 74%);
 }

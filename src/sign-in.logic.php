@@ -61,11 +61,14 @@ if (isset($_POST['email'])) {
 
                 if (password_verify($password, $user->password)) {
                     $_SESSION['signInSuccess'] = true;
+                    $_SESSION['trialReminder'] = true;
                     $_SESSION['user_id'] = $user->id;
                     $_SESSION['user_name'] = $user->name;
                     $_SESSION['user_lastName'] = $user->lastName;
                     $_SESSION['user_email'] = $user->email;
                     $_SESSION['user_trial'] = $user->trial;
+                    $_SESSION['user_tutorials_id'] = json_decode($user->tutorials_id);
+    
                     header("Location: home-page.php");
                 } else {
                     validationFail("e_email", "Invalid credentials");

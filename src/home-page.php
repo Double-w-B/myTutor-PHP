@@ -1,33 +1,63 @@
+<?php require_once "home-page.logic.php" ?>
 <?php include "./inc/head.php" ?>
-<?php
-$sql = 'SELECT * FROM tutorials';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$posts = $stmt->fetchAll();
 
-?>
+<header>
+    <div class="logo no-select">mytutor</div>
+    <button><img src="./assets/icon-bars-menu.svg" alt=""></button>
+</header>
 
-<main class="home-page">
+<div class="dashboard">
+    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px);" : "" ?>'>
+        <?php if (isset($_SESSION['trialReminder'])) : ?>
+            <article>
+                <p>Hey,
+                    <span><?= ucfirst($_SESSION['user_name']) ?></span>! Free trial ends in <span><?= $trialEndTime ?>
+                        days</span>, upgrade your subscription <a href="subscription.php">now</a>.
+                </p>
+                <form method="POST" action="home-page.php">
+                    <input type="hidden" name="trial-close-btn" value="">
+                    <button type="submit"><img src="./assets/icon-close.svg" alt="" /></button>
+                </form>
+            </article>
+        <?php endif; ?>
 
-    <?php foreach ($posts as $post) : ?>
-        <div class="tutorial">
-            <picture>
-                <img src="<?php echo $post->img ?>" alt="">
-            </picture>
-            <div class="tutorial-details__content">
-                <h4><?php echo $post->title ?></h4>
-                <p>Created by <?php echo $post->created_by ?></p>
-                <div class="tutorial-details__content__info">
-                    <p><i class="fa-solid fa-bars"></i>Modules: <?php echo $post->modules ?></p>
-                    <p><i class="fa-regular fa-clock"></i>Hours: <?php echo $post->hours ?></p>
+        <section>
+
+            <?php foreach ($tutorials as $tutorial) : ?>
+                <div class="tutorial">
+                    <picture>
+                        <img src="<?= $tutorial->img ?>" alt="">
+                    </picture>
+                    <div class="tutorial-details__content">
+                        <h4><?= $tutorial->title ?></h4>
+                        <p>Created by <?= $tutorial->created_by ?></p>
+                        <div class="tutorial-details__content__info">
+                            <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial->modules ?></p>
+                            <p><img src="./assets/icon-clock.svg" alt="">Hours: <?= $tutorial->hours ?></p>
+                        </div>
+                    </div>
+
+                    <form method="POST" action="home-page.php">
+                        <input type="hidden" name="<?= !in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? 'addTutorialIdToDB' : 'removeTutorialIdFromDB' ?>" value="<?= $tutorial->id ?>">
+                        <button type="submit">
+                            <?= !in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? 'add to' : 'remove from' ?>
+                            my tutors
+                        </button>
+                    </form>
+
+
                 </div>
-            </div>
-            <div class="tutorial-add-icon">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-        </div>
-    <?php endforeach; ?>
+            <?php endforeach; ?>
+        </section>
+    </main>
+    <nav>
+        <ul>
+            <li><a href=' user-tutors.php'>my tutors</a></li>
+            <li><a href='sign-out.logic.php'>sign out</a></li>
+        </ul>
 
-</main>
+    </nav>
+</div>
+<script src="./js/home-page.js"></script>
 
 <?php include "./inc/footer.php" ?>
