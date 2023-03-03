@@ -1,3 +1,5 @@
+@use "../utils/_mixins" as shared;
+
 .dashboard {
   display: flex;
   height: calc(100% - 64px - 24px);
@@ -15,12 +17,10 @@
     }
 
     article {
+      @include shared.centerElements;
       width: calc(100% - 4rem);
       height: 50px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0 auto 1rem auto;
       background-color: rgba(255, 255, 255, 0.4);
 
       p {
@@ -63,11 +63,35 @@
       }
     }
 
+    .cta {
+      @include shared.centerElements;
+      flex-direction: column;
+      width: 100%;
+      height: 400px;
+      transition: 0.3s linear;
+
+      h1,
+      p {
+        text-align: center;
+        color: $white;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+
+        a {
+          color: $accent-blue;
+          text-decoration: underline;
+        }
+      }
+    }
+
     section {
       width: 100%;
       height: 100%;
       margin: 0 auto;
-      padding: 1rem 3rem;
+      padding: 0 3rem 1rem 3rem;
       overflow-y: scroll;
       display: grid;
       gap: 2rem;
@@ -133,6 +157,28 @@
           }
         }
 
+        button {
+          margin: auto 0 0 0;
+          width: 100%;
+          height: 35px;
+          text-transform: uppercase;
+          color: $white;
+          background-color: $primary-green;
+          border-radius: 0.3rem;
+          border: none;
+          cursor: pointer;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          position: relative;
+
+          &:active {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+              rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+              rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+          }
+        }
+
         form {
           width: 100%;
           height: 35px;
@@ -192,16 +238,14 @@
       ul {
         width: 100%;
         list-style-type: none;
-        
+
         li {
+          @include shared.centerElements;
           width: 100%;
           margin-bottom: 0.5rem;
 
           a {
-            width: 100%;
-            display: block;
             font-size: 1.2rem;
-            text-align: center;
             text-transform: uppercase;
             color: $neutral-dark-blue;
             cursor: pointer;
@@ -210,14 +254,16 @@
             visibility: visible;
             opacity: 1;
 
+            &.active {
+              color: $white;
+            }
+
             &:hover {
               color: $white;
             }
           }
         }
       }
-
-   
     }
   }
 }

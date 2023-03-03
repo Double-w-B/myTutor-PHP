@@ -67,8 +67,12 @@ if (isset($_POST['email'])) {
                     $_SESSION['user_lastName'] = $user->lastName;
                     $_SESSION['user_email'] = $user->email;
                     $_SESSION['user_trial'] = $user->trial;
-                    $_SESSION['user_tutorials_id'] = json_decode($user->tutorials_id);
-    
+                    if (strlen($user->tutorials_id) > 0) {
+                        $_SESSION['user_tutorials_id'] = explode(",", $user->tutorials_id);
+                    } else {
+                        $_SESSION['user_tutorials_id'] = [];
+                    }
+
                     header("Location: home-page.php");
                 } else {
                     validationFail("e_email", "Invalid credentials");
