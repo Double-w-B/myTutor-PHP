@@ -8,23 +8,11 @@
 
 <div class="dashboard">
     <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
-        <?php if (isset($_SESSION['trialReminder'])) : ?>
-            <article>
-                <p>Hey,
-                    <span><?= ucfirst($_SESSION['user_name']) ?></span>! Free trial ends in <span><?= $trialEndTime ?>
-                        days</span>, upgrade your subscription <a href="subscription.php">now</a>.
-                </p>
-                <form>
-                    <input type="hidden" name="trial-close-btn" value="">
-                    <button type="submit"><img src="./assets/icon-close.svg" alt="" /></button>
-                </form>
-            </article>
-        <?php endif; ?>
 
+        <?php include "./inc/trial-reminder.php" ?>
 
         <?php if (count($userTutorials) > 0) : ?>
             <section>
-
                 <?php foreach ($userTutorials as $tutorial) : ?>
                     <div class="tutorial">
                         <picture>
@@ -58,6 +46,7 @@
         <?php endif; ?>
 
     </main>
+
     <nav>
         <ul>
             <li><a href='account.php'>account</a></li>
@@ -66,11 +55,11 @@
             <li><a href='subscription.php'>subscription</a></li>
             <li><a href='sign-out.logic.php'>sign out</a></li>
         </ul>
-
     </nav>
 </div>
 
 <?php include "./inc/footer.php" ?>
 
+<script type="module" src="./js/user-tutors.js"></script>
 <script src="./js/menu.js"></script>
-<script src="./js/user-tutors.js"></script>
+<script src="./js/trial-reminder.js"></script>
