@@ -12,26 +12,14 @@ if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
 
-if (isset($_POST['addTutorialIdToDB'])) {
+if (isset($_POST['addTutorialIdToDB']) && !in_array($_POST['addTutorialIdToDB'], $_SESSION["user_tutorials_id"])) {
     array_push($_SESSION['user_tutorials_id'], $_POST['addTutorialIdToDB']);
+    $savedTutorials = implode(",", $_SESSION['user_tutorials_id']);
 
-    $jsonIdArray = json_encode($_SESSION['user_tutorials_id']);
     $sql = "UPDATE users SET tutorials_id = :tutorials_id WHERE id = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $jsonIdArray]);
+    $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $savedTutorials]);
 }
-
-if (isset($_POST['removeTutorialIdFromDB'])) {
-    $tutorialId = array_search($_POST['removeTutorialIdFromDB'], $_SESSION["user_tutorials_id"]);
-    unset($_SESSION["user_tutorials_id"][$tutorialId]);
-
-    $jsonIdArray = json_encode($_SESSION['user_tutorials_id']);
-    $sql = "UPDATE users SET tutorials_id = :tutorials_id WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $jsonIdArray]);
-}
-
-
 
 $dateTime = new DateTime();
 $currentDate = $dateTime->format("Y-m-d H:i:s");

@@ -7,22 +7,11 @@
 </header>
 
 <div class="dashboard">
-    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px);" : "" ?>'>
-        <?php if (isset($_SESSION['trialReminder'])) : ?>
-            <article>
-                <p>Hey,
-                    <span><?= ucfirst($_SESSION['user_name']) ?></span>! Free trial ends in <span><?= $trialEndTime ?>
-                        days</span>, upgrade your subscription <a href="subscription.php">now</a>.
-                </p>
-                <form method="POST" action="home-page.php">
-                    <input type="hidden" name="trial-close-btn" value="">
-                    <button type="submit"><img src="./assets/icon-close.svg" alt="" /></button>
-                </form>
-            </article>
-        <?php endif; ?>
+    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
+
+        <?php include "./inc/trial-reminder.php" ?>
 
         <section>
-
             <?php foreach ($tutorials as $tutorial) : ?>
                 <div class="tutorial">
                     <picture>
@@ -37,27 +26,31 @@
                         </div>
                     </div>
 
-                    <form method="POST" action="home-page.php">
-                        <input type="hidden" name="<?= !in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? 'addTutorialIdToDB' : 'removeTutorialIdFromDB' ?>" value="<?= $tutorial->id ?>">
-                        <button type="submit">
-                            <?= !in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? 'add to' : 'remove from' ?>
-                            my tutors
+                    <form>
+                        <input type="hidden" name="addTutorialIdToDB" value="<?= $tutorial->id ?>">
+                        <button type="submit" style='<?= in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? "pointer-events: none; box-shadow: none; background-color: #342A7A;" : "" ?>'>
+                            <?= !in_array($tutorial->id, $_SESSION["user_tutorials_id"]) ? 'add to my tutors' : 'in progress' ?>
                         </button>
                     </form>
-
-
                 </div>
             <?php endforeach; ?>
         </section>
+
     </main>
+
     <nav>
         <ul>
-            <li><a href=' user-tutors.php'>my tutors</a></li>
+            <li><a href='account.php'>account</a></li>
+            <li><a href='user-tutors.php'>my tutors</a></li>
+            <li><a href='#' class="active">all tutors</a></li>
+            <li><a href='subscription.php'>subscription</a></li>
             <li><a href='sign-out.logic.php'>sign out</a></li>
         </ul>
-
     </nav>
 </div>
-<script src="./js/home-page.js"></script>
 
 <?php include "./inc/footer.php" ?>
+
+<script type="module" src="./js/home-page.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/trial-reminder.js"></script>
