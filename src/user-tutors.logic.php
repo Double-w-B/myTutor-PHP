@@ -7,6 +7,10 @@ if (!isset($_SESSION["signInSuccess"])) {
     header("Location: sign-in.php");
     exit();
 }
+if ($_SESSION['user_trialEnd'] && !$_SESSION['user_subscription']) {
+    header("Location: subscription.php");
+    exit();
+}
 
 if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
@@ -23,11 +27,6 @@ if (isset($_POST['removeTutorialIdFromDB'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $savedTutorials]);
 }
-
-$dateTime = new DateTime();
-$currentDate = $dateTime->format("Y-m-d H:i:s");
-$userTrialDate = DateTime::createFromFormat("Y-m-d H:i:s", $_SESSION['user_trial']);
-$trialEndTime = $dateTime->diff($userTrialDate)->format("%d");
 
 $sql = 'SELECT * FROM tutorials';
 $stmt = $pdo->prepare($sql);

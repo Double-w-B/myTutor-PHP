@@ -3,6 +3,9 @@
 
 session_start();
 
+$dateTime = new DateTime();
+$currentDate = $dateTime->format("Y-m-d H:i:s");
+
 if (isset($_POST['email'])) {
     //! validation success
     $passedAll = true;
@@ -67,11 +70,17 @@ if (isset($_POST['email'])) {
                     $_SESSION['user_lastName'] = $user->lastName;
                     $_SESSION['user_email'] = $user->email;
                     $_SESSION['user_trial'] = $user->trial;
+                    $_SESSION['user_trialEnd'] = $dateTime->format("Y-m-d H:i:s") >
+                        DateTime::createFromFormat("Y-m-d H:i:s", $user->trial)->format("Y-m-d H:i:s");
+                    $_SESSION['user_subscription'] = $user->subscription_id;
                     if (strlen($user->tutorials_id) > 0) {
                         $_SESSION['user_tutorials_id'] = explode(",", $user->tutorials_id);
                     } else {
                         $_SESSION['user_tutorials_id'] = [];
                     }
+
+
+
 
                     header("Location: home-page.php");
                 } else {

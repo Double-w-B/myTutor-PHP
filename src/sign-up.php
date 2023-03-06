@@ -36,7 +36,6 @@
             <div>
                 <input type="password" name="password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" autocomplete="off" value="<?php rememberInputValue('input_password') ?>">
                 <?php showInputError("e_password") ?>
-
             </div>
             <button type="submit">Claim your free trial</button>
             <p>By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>

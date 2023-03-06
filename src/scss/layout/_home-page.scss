@@ -14,177 +14,177 @@
       &.active-nav {
         width: calc(100% - 300px);
       }
-    }
 
-    article {
-      @include shared.centerElements;
-      width: calc(100% - 4rem);
-      height: 50px;
-      margin: 0 auto 1rem auto;
-      background-color: rgba(255, 255, 255, 0.4);
+      article.trial {
+        @include shared.centerElements;
+        width: calc(100% - 4rem);
+        height: 50px;
+        margin: 0 auto 1rem auto;
+        background-color: rgba(255, 255, 255, 0.4);
 
-      p {
-        font-size: 1.2rem;
-        color: $neutral-dark-blue;
+        p {
+          font-size: 1.2rem;
+          color: $neutral-dark-blue;
 
-        span {
-          color: $accent-blue;
-          font-weight: bold;
-        }
-
-        a {
-          color: $accent-blue;
-          text-decoration: underline;
-        }
-      }
-
-      form {
-        width: 30px;
-        height: 30px;
-        margin-left: 2rem;
-
-        button {
-          width: 100%;
-          height: 100%;
-          border: none;
-          background-color: transparent;
-
-          img {
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            transition: 0.3s linear;
-
-            &:active {
-              transform: scale(0.9);
-            }
-          }
-        }
-      }
-    }
-
-    .cta {
-      @include shared.centerElements;
-      flex-direction: column;
-      width: 100%;
-      height: 400px;
-      transition: 0.3s linear;
-
-      h1,
-      p {
-        text-align: center;
-        color: $white;
-      }
-
-      p {
-        font-size: 1.2rem;
-        margin-top: 1rem;
-
-        a {
-          color: $accent-blue;
-          text-decoration: underline;
-        }
-      }
-    }
-
-    section {
-      width: 100%;
-      height: 100%;
-      margin: 0 auto;
-      padding: 0 3rem 1rem 3rem;
-      overflow-y: scroll;
-      display: grid;
-      gap: 2rem;
-      justify-content: space-between;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-
-      .tutorial {
-        height: 380px;
-        background-color: $white;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
-        picture {
-          width: 100%;
-          height: 180px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            border-bottom: 1px solid $neutral-grayish-blue;
-          }
-        }
-
-        &-details__content {
-          padding: 1rem 0;
-
-          h4 {
-            margin-bottom: 0.5rem;
+          span {
             color: $accent-blue;
+            font-weight: bold;
           }
 
-          p {
-            font-size: 0.8rem;
-            color: $neutral-grayish-blue;
-          }
-
-          &__info {
-            width: 100%;
-            margin-top: 0.5rem;
-            display: flex;
-
-            p {
-              color: black;
-              display: flex;
-              align-items: center;
-
-              img {
-                width: 20px;
-                margin-right: 0.3rem;
-              }
-
-              &:first-child {
-                margin-right: 1rem;
-              }
-            }
+          a {
+            color: $accent-blue;
+            text-decoration: underline;
           }
         }
 
         form {
-          width: 100%;
-          height: 35px;
-          margin: auto 0 0 0;
+          width: 30px;
+          height: 30px;
+          margin-left: 2rem;
 
           button {
             width: 100%;
             height: 100%;
-            text-transform: uppercase;
-            color: $white;
-            background-color: $primary-green;
-            border-radius: 0.3rem;
             border: none;
-            cursor: pointer;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-              rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-              rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            background-color: transparent;
 
-            &.active {
-              pointer-events: none;
-              box-shadow: none;
-              background-color: #342a7a;
+            img {
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+              transition: 0.3s linear;
+
+              &:active {
+                transform: scale(0.9);
+              }
+            }
+          }
+        }
+      }
+
+      .cta {
+        @include shared.centerElements;
+        flex-direction: column;
+        width: 100%;
+        height: 400px;
+        transition: 0.3s linear;
+
+        h1,
+        p {
+          text-align: center;
+          color: $white;
+        }
+
+        p {
+          font-size: 1.2rem;
+          margin-top: 1rem;
+
+          a {
+            color: $accent-blue;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      section {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 3rem 1rem 3rem;
+        overflow-y: scroll;
+        display: grid;
+        gap: 2rem;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+        .tutorial {
+          height: 380px;
+          background-color: $white;
+          border-radius: 0.5rem;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+          picture {
+            width: 100%;
+            height: 180px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              display: block;
+              object-fit: cover;
+              border-bottom: 1px solid $neutral-grayish-blue;
+            }
+          }
+
+          &-details__content {
+            padding: 1rem 0;
+
+            h4 {
+              margin-bottom: 0.5rem;
+              color: $accent-blue;
             }
 
-            &:active {
-              box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            p {
+              font-size: 0.8rem;
+              color: $neutral-grayish-blue;
+            }
+
+            &__info {
+              width: 100%;
+              margin-top: 0.5rem;
+              display: flex;
+
+              p {
+                color: black;
+                display: flex;
+                align-items: center;
+
+                img {
+                  width: 20px;
+                  margin-right: 0.3rem;
+                }
+
+                &:first-child {
+                  margin-right: 1rem;
+                }
+              }
+            }
+          }
+
+          form {
+            width: 100%;
+            height: 35px;
+            margin: auto 0 0 0;
+
+            button {
+              width: 100%;
+              height: 100%;
+              text-transform: uppercase;
+              color: $white;
+              background-color: $primary-green;
+              border-radius: 0.3rem;
+              border: none;
+              cursor: pointer;
+              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+              &.active {
+                pointer-events: none;
+                box-shadow: none;
+                background-color: #342a7a;
+              }
+
+              &:active {
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                  rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                  rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              }
             }
           }
         }

@@ -1,4 +1,4 @@
-const trialReminderForm = document.querySelector("article form");
+const trialReminderForm = document.querySelector("article.trial form");
 const requestOptions = {};
 
 async function handleReminder(e) {

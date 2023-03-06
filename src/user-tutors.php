@@ -7,7 +7,7 @@
 </header>
 
 <div class="dashboard">
-    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
+    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) && !$_SESSION['user_trialEnd'] ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
         <?php include "./inc/trial-reminder.php" ?>
 
