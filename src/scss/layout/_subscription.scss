@@ -1,0 +1,295 @@
+@use "../utils/_mixins" as shared;
+
+.dashboard {
+  display: flex;
+  height: calc(100% - 64px - 24px);
+
+  main {
+    &.subscription {
+      width: 100%;
+      height: 100%;
+      transition: 0.3s linear;
+      padding-top: 1rem;
+
+      &.active-nav {
+        width: calc(100% - 300px);
+      }
+
+      &.active-trial {
+        height: calc(100% - 50px - 1rem);
+      }
+
+      article.trial {
+        @include shared.centerElements;
+        width: calc(100% - 4rem);
+        height: 50px;
+        margin: 0 auto 1rem auto;
+        background-color: rgba(255, 255, 255, 0.4);
+
+        p {
+          font-size: 1.2rem;
+          color: $neutral-dark-blue;
+
+          span {
+            color: $accent-blue;
+            font-weight: bold;
+          }
+
+          a {
+            color: $accent-blue;
+            text-decoration: underline;
+          }
+        }
+
+        form {
+          width: 30px;
+          height: 30px;
+          margin-left: 2rem;
+
+          button {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+
+            img {
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+              transition: 0.3s linear;
+
+              &:active {
+                transform: scale(0.9);
+              }
+            }
+          }
+        }
+      }
+
+      section {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 3rem 1rem 3rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        overflow-y: scroll;
+
+        article.plan {
+          width: calc(100% / 3.5);
+          min-width: 350px;
+          max-width: 400px;
+          height: 95%;
+          max-height: 535px;
+          margin-bottom: 1rem;
+          border-radius: 0.5rem;
+          background-color: $white;
+          transition: 0.3s linear;
+          transform: scale(0.9);
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+          &.active {
+            transform: scale(1);
+          }
+
+          &:hover {
+            transform: scale(1);
+          }
+
+          &:nth-child(1) {
+            .plan__benefits p {
+              &:nth-child(4),
+              &:nth-child(5),
+              &:nth-child(6),
+              &:nth-child(7),
+              &:nth-child(8) {
+                span {
+                  opacity: 0.4;
+                }
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            .plan__benefits p {
+              &:nth-child(6),
+              &:nth-child(7),
+              &:nth-child(8) {
+                span {
+                  opacity: 0.4;
+                }
+              }
+            }
+            .plan__title p {
+              color: $primary-green;
+            }
+            form button {
+              background-color: $primary-green;
+            }
+          }
+
+          &:nth-child(3) {
+            .plan__title p {
+              color: $accent-blue;
+            }
+            form button {
+              background-color: $accent-blue;
+            }
+          }
+
+          .plan__title {
+            width: 100%;
+            height: 15%;
+            display: grid;
+            place-content: center;
+
+            p {
+              font-size: 3rem;
+              text-transform: uppercase;
+              color: $neutral-dark-blue;
+              text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            }
+          }
+
+          .plan__benefits {
+            width: 100%;
+            height: calc(70% - 45px - 2rem);
+            padding: 0 0.5rem 0 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            p {
+              display: flex;
+              align-items: center;
+
+              img {
+                align-self: flex-start;
+                width: 13px;
+                margin-top: 0.3rem;
+                margin-right: 0.5rem;
+              }
+            }
+          }
+
+          .plan__price {
+            width: 100%;
+            height: 15%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              &:first-child {
+                font-size: 2rem;
+              }
+              &:last-child {
+                font-size: 1rem;
+                opacity: 0.4;
+              }
+            }
+          }
+
+          form {
+            width: 100%;
+            height: calc(45px + 2rem);
+            padding: 1rem;
+            button {
+              width: 100%;
+              height: 45px;
+              text-transform: uppercase;
+              color: $white;
+              background-color: $primary-green;
+              background-color: $neutral-dark-blue;
+              border-radius: 0.3rem;
+              border: none;
+              cursor: pointer;
+              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+              &.active {
+                box-shadow: none;
+                pointer-events: none;
+              }
+
+              &:active {
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                  rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                  rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              }
+
+              .loading span {
+                top: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  nav {
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: 0.3s linear;
+    padding: 2rem 0 0 0;
+
+    ul {
+      li {
+        a {
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+    }
+
+    * {
+      font-size: 0;
+    }
+
+    &.active {
+      width: 300px;
+
+      * {
+        font-size: initial;
+      }
+
+      ul {
+        width: 100%;
+        list-style-type: none;
+
+        li {
+          @include shared.centerElements;
+          width: 100%;
+          margin-bottom: 0.5rem;
+
+          a {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: $neutral-dark-blue;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out,
+              opacity 0.6s ease-in-out;
+            visibility: visible;
+            opacity: 1;
+
+            &.active {
+              color: $white;
+              font-weight: bold;
+            }
+
+            &:hover {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

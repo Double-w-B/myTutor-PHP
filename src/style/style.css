@@ -1,0 +1,986 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: hsl(0deg, 100%, 74%);
+  background-image: url("../assets/bg-intro-desktop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  width: 100%;
+  height: calc(100% - 64px - 24px);
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.loading {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 80px;
+}
+.loading span {
+  position: absolute;
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.loading span:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.loading span:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.loading span:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.loading span:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+.dashboard {
+  display: flex;
+  height: calc(100% - 64px - 24px);
+}
+.dashboard main.home-page {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+  padding-top: 1rem;
+}
+.dashboard main.home-page.active-nav {
+  width: calc(100% - 300px);
+}
+.dashboard main.home-page article.trial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 4rem);
+  height: 50px;
+  margin: 0 auto 1rem auto;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.dashboard main.home-page article.trial p {
+  font-size: 1.2rem;
+  color: hsl(249deg, 10%, 26%);
+}
+.dashboard main.home-page article.trial p span {
+  color: hsl(248deg, 32%, 49%);
+  font-weight: bold;
+}
+.dashboard main.home-page article.trial p a {
+  color: hsl(248deg, 32%, 49%);
+  text-decoration: underline;
+}
+.dashboard main.home-page article.trial form {
+  width: 30px;
+  height: 30px;
+  margin-left: 2rem;
+}
+.dashboard main.home-page article.trial form button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+.dashboard main.home-page article.trial form button img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.dashboard main.home-page article.trial form button img:active {
+  transform: scale(0.9);
+}
+.dashboard main.home-page .cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 400px;
+  transition: 0.3s linear;
+}
+.dashboard main.home-page .cta h1,
+.dashboard main.home-page .cta p {
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.dashboard main.home-page .cta p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.dashboard main.home-page .cta p a {
+  color: hsl(248deg, 32%, 49%);
+  text-decoration: underline;
+}
+.dashboard main.home-page section {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 3rem 1rem 3rem;
+  overflow-y: scroll;
+  display: grid;
+  gap: 2rem;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.dashboard main.home-page section .tutorial {
+  height: 380px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.home-page section .tutorial picture {
+  width: 100%;
+  height: 180px;
+}
+.dashboard main.home-page section .tutorial picture img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-bottom: 1px solid hsl(246deg, 25%, 77%);
+}
+.dashboard main.home-page section .tutorial-details__content {
+  padding: 1rem 0;
+}
+.dashboard main.home-page section .tutorial-details__content h4 {
+  margin-bottom: 0.5rem;
+  color: hsl(248deg, 32%, 49%);
+}
+.dashboard main.home-page section .tutorial-details__content p {
+  font-size: 0.8rem;
+  color: hsl(246deg, 25%, 77%);
+}
+.dashboard main.home-page section .tutorial-details__content__info {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+}
+.dashboard main.home-page section .tutorial-details__content__info p {
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.dashboard main.home-page section .tutorial-details__content__info p img {
+  width: 20px;
+  margin-right: 0.3rem;
+}
+.dashboard main.home-page section .tutorial-details__content__info p:first-child {
+  margin-right: 1rem;
+}
+.dashboard main.home-page section .tutorial form {
+  width: 100%;
+  height: 35px;
+  margin: auto 0 0 0;
+}
+.dashboard main.home-page section .tutorial form button {
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.home-page section .tutorial form button.active {
+  pointer-events: none;
+  box-shadow: none;
+  background-color: #342a7a;
+}
+.dashboard main.home-page section .tutorial form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard nav {
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.3s linear;
+  padding: 2rem 0 0 0;
+}
+.dashboard nav ul li a {
+  visibility: hidden;
+  opacity: 0;
+}
+.dashboard nav * {
+  font-size: 0;
+}
+.dashboard nav.active {
+  width: 300px;
+}
+.dashboard nav.active * {
+  font-size: initial;
+}
+.dashboard nav.active ul {
+  width: 100%;
+  list-style-type: none;
+}
+.dashboard nav.active ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.dashboard nav.active ul li a {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: hsl(249deg, 10%, 26%);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
+.dashboard nav.active ul li a.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.dashboard nav.active ul li a:hover {
+  color: rgb(255, 255, 255);
+}
+
+header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s linear;
+}
+header.active-nav {
+  box-shadow: none;
+  padding-right: 250px;
+}
+header.active-nav button img {
+  width: 35px;
+}
+header .logo {
+  height: 100%;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  display: grid;
+  text-transform: uppercase;
+  place-items: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+header a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: 0.25s linear;
+}
+header a:active {
+  transform: scale(0.9);
+}
+header a:active span {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+header a span {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s linear;
+  background-color: hsl(249deg, 10%, 26%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+header button {
+  display: grid;
+  place-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+header button img {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.4s linear;
+}
+header button img:active {
+  transform: scale(0.9);
+}
+
+footer {
+  width: 100%;
+  height: 24px;
+  display: grid;
+  place-content: center;
+  font-size: 0.7rem;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  font-size: 0.7rem;
+  color: hsl(248deg, 32%, 49%);
+}
+
+main.sign-up {
+  width: 85%;
+  height: calc(100% - 64px - 24px);
+  margin: 0 auto;
+  display: flex;
+}
+main.sign-up .cta {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 5rem;
+}
+main.sign-up .cta h1 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+}
+main.sign-up .cta p {
+  color: rgb(255, 255, 255);
+}
+main.sign-up .form-data {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main.sign-up .form-data-trial {
+  width: 75%;
+  height: 50px;
+  margin: 0 auto 2rem auto;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  background-color: hsl(249deg, 10%, 26%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data-trial p {
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+main.sign-up .form-data-trial p span {
+  font-weight: normal;
+}
+main.sign-up .form-data form {
+  width: 75%;
+  height: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data form div {
+  width: 100%;
+  min-height: 65px;
+  position: relative;
+}
+main.sign-up .form-data form div input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+}
+main.sign-up .form-data form div input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+main.sign-up .form-data form div p {
+  font-size: 0.8rem;
+  color: hsl(0deg, 100%, 74%);
+}
+main.sign-up .form-data form div img {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  right: 1rem;
+}
+main.sign-up .form-data form button {
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-up .form-data form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+main.sign-up .form-data form p {
+  text-align: center;
+  font-size: 0.7rem;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-up .form-data form p a {
+  font-weight: bold;
+  color: hsl(0deg, 100%, 74%);
+}
+
+main.sign-in {
+  width: 85%;
+  height: calc(100% - 64px - 24px);
+  margin: 0 auto;
+  display: flex;
+}
+main.sign-in h2 {
+  text-align: center;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .cta {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 5rem;
+}
+main.sign-in .cta h1 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255);
+}
+main.sign-in .cta p {
+  color: rgb(255, 255, 255);
+}
+main.sign-in .cta p:first-of-type {
+  margin-bottom: 1rem;
+}
+main.sign-in .form-data {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main.sign-in .form-data form {
+  width: 75%;
+  height: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-in .form-data form div {
+  width: 100%;
+  min-height: 65px;
+  position: relative;
+}
+main.sign-in .form-data form div input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+}
+main.sign-in .form-data form div input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .form-data form div p {
+  font-size: 0.8rem;
+  color: hsl(0deg, 100%, 74%);
+}
+main.sign-in .form-data form div img {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  right: 1rem;
+}
+main.sign-in .form-data form button {
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+main.sign-in .form-data form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+main.sign-in .form-data form p {
+  text-align: center;
+  font-size: 0.7rem;
+  color: hsl(249deg, 10%, 26%);
+}
+main.sign-in .form-data form p a {
+  font-weight: bold;
+  color: hsl(0deg, 100%, 74%);
+}
+
+.dashboard {
+  display: flex;
+  height: calc(100% - 64px - 24px);
+}
+.dashboard main.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+}
+.dashboard main.account.active-nav {
+  width: calc(100% - 300px);
+}
+.dashboard main.account section {
+  width: 55%;
+  min-width: 840px;
+  height: 95%;
+  padding: 0.5rem 1rem 1rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.account section form:nth-child(1) {
+  width: 100%;
+  height: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.dashboard main.account section form:nth-child(1) h1 {
+  text-transform: capitalize;
+  color: hsl(249deg, 10%, 26%);
+  margin-bottom: 0.5rem;
+  margin-left: 2.5%;
+}
+.dashboard main.account section form:nth-child(1) div {
+  width: 95%;
+  height: 80px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 45px 35px;
+}
+.dashboard main.account section form:nth-child(1) div input {
+  height: 45px;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+}
+.dashboard main.account section form:nth-child(1) div input:first-child {
+  grid-column: 1/6;
+}
+.dashboard main.account section form:nth-child(1) div input:last-child {
+  grid-column: 8/13;
+}
+.dashboard main.account section form:nth-child(1) div input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+.dashboard main.account section form:nth-child(1) button {
+  width: 30%;
+  height: 45px;
+  margin: 0 2.5% 0 auto;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.account section form:nth-child(1) button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard main.account section form:nth-child(2) {
+  width: 100%;
+  height: 20%;
+  margin: 0 auto;
+  padding-left: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dashboard main.account section form:nth-child(2) h2 {
+  color: hsl(0deg, 100%, 74%);
+}
+.dashboard main.account section form:nth-child(2) p {
+  font-size: 0.9rem;
+  color: hsl(249deg, 10%, 26%);
+  opacity: 0.4;
+  margin: 0 0 auto 0;
+}
+.dashboard main.account section form:nth-child(2) button {
+  width: 30%;
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(0deg, 100%, 74%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.account section form:nth-child(2) button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard nav {
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.3s linear;
+  padding: 2rem 0 0 0;
+}
+.dashboard nav ul li a {
+  visibility: hidden;
+  opacity: 0;
+}
+.dashboard nav * {
+  font-size: 0;
+}
+.dashboard nav.active {
+  width: 300px;
+}
+.dashboard nav.active * {
+  font-size: initial;
+}
+.dashboard nav.active ul {
+  width: 100%;
+  list-style-type: none;
+}
+.dashboard nav.active ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.dashboard nav.active ul li a {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: hsl(249deg, 10%, 26%);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
+.dashboard nav.active ul li a.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.dashboard nav.active ul li a:hover {
+  color: rgb(255, 255, 255);
+}
+
+.dashboard {
+  display: flex;
+  height: calc(100% - 64px - 24px);
+}
+.dashboard main.subscription {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+  padding-top: 1rem;
+}
+.dashboard main.subscription.active-nav {
+  width: calc(100% - 300px);
+}
+.dashboard main.subscription.active-trial {
+  height: calc(100% - 50px - 1rem);
+}
+.dashboard main.subscription article.trial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 4rem);
+  height: 50px;
+  margin: 0 auto 1rem auto;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.dashboard main.subscription article.trial p {
+  font-size: 1.2rem;
+  color: hsl(249deg, 10%, 26%);
+}
+.dashboard main.subscription article.trial p span {
+  color: hsl(248deg, 32%, 49%);
+  font-weight: bold;
+}
+.dashboard main.subscription article.trial p a {
+  color: hsl(248deg, 32%, 49%);
+  text-decoration: underline;
+}
+.dashboard main.subscription article.trial form {
+  width: 30px;
+  height: 30px;
+  margin-left: 2rem;
+}
+.dashboard main.subscription article.trial form button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+.dashboard main.subscription article.trial form button img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.dashboard main.subscription article.trial form button img:active {
+  transform: scale(0.9);
+}
+.dashboard main.subscription section {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 3rem 1rem 3rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-y: scroll;
+}
+.dashboard main.subscription section article.plan {
+  width: 28.5714285714%;
+  min-width: 350px;
+  max-width: 400px;
+  height: 95%;
+  max-height: 535px;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s linear;
+  transform: scale(0.9);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.subscription section article.plan.active {
+  transform: scale(1);
+}
+.dashboard main.subscription section article.plan:hover {
+  transform: scale(1);
+}
+.dashboard main.subscription section article.plan:nth-child(1) .plan__benefits p:nth-child(4) span, .dashboard main.subscription section article.plan:nth-child(1) .plan__benefits p:nth-child(5) span, .dashboard main.subscription section article.plan:nth-child(1) .plan__benefits p:nth-child(6) span, .dashboard main.subscription section article.plan:nth-child(1) .plan__benefits p:nth-child(7) span, .dashboard main.subscription section article.plan:nth-child(1) .plan__benefits p:nth-child(8) span {
+  opacity: 0.4;
+}
+.dashboard main.subscription section article.plan:nth-child(2) .plan__benefits p:nth-child(6) span, .dashboard main.subscription section article.plan:nth-child(2) .plan__benefits p:nth-child(7) span, .dashboard main.subscription section article.plan:nth-child(2) .plan__benefits p:nth-child(8) span {
+  opacity: 0.4;
+}
+.dashboard main.subscription section article.plan:nth-child(2) .plan__title p {
+  color: hsl(154deg, 59%, 51%);
+}
+.dashboard main.subscription section article.plan:nth-child(2) form button {
+  background-color: hsl(154deg, 59%, 51%);
+}
+.dashboard main.subscription section article.plan:nth-child(3) .plan__title p {
+  color: hsl(248deg, 32%, 49%);
+}
+.dashboard main.subscription section article.plan:nth-child(3) form button {
+  background-color: hsl(248deg, 32%, 49%);
+}
+.dashboard main.subscription section article.plan .plan__title {
+  width: 100%;
+  height: 15%;
+  display: grid;
+  place-content: center;
+}
+.dashboard main.subscription section article.plan .plan__title p {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: hsl(249deg, 10%, 26%);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.dashboard main.subscription section article.plan .plan__benefits {
+  width: 100%;
+  height: calc(70% - 45px - 2rem);
+  padding: 0 0.5rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.dashboard main.subscription section article.plan .plan__benefits p {
+  display: flex;
+  align-items: center;
+}
+.dashboard main.subscription section article.plan .plan__benefits p img {
+  align-self: flex-start;
+  width: 13px;
+  margin-top: 0.3rem;
+  margin-right: 0.5rem;
+}
+.dashboard main.subscription section article.plan .plan__price {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard main.subscription section article.plan .plan__price p:first-child {
+  font-size: 2rem;
+}
+.dashboard main.subscription section article.plan .plan__price p:last-child {
+  font-size: 1rem;
+  opacity: 0.4;
+}
+.dashboard main.subscription section article.plan form {
+  width: 100%;
+  height: calc(45px + 2rem);
+  padding: 1rem;
+}
+.dashboard main.subscription section article.plan form button {
+  width: 100%;
+  height: 45px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  background-color: hsl(154deg, 59%, 51%);
+  background-color: hsl(249deg, 10%, 26%);
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.dashboard main.subscription section article.plan form button.active {
+  box-shadow: none;
+  pointer-events: none;
+}
+.dashboard main.subscription section article.plan form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard main.subscription section article.plan form button .loading span {
+  top: 15px;
+}
+.dashboard nav {
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.3s linear;
+  padding: 2rem 0 0 0;
+}
+.dashboard nav ul li a {
+  visibility: hidden;
+  opacity: 0;
+}
+.dashboard nav * {
+  font-size: 0;
+}
+.dashboard nav.active {
+  width: 300px;
+}
+.dashboard nav.active * {
+  font-size: initial;
+}
+.dashboard nav.active ul {
+  width: 100%;
+  list-style-type: none;
+}
+.dashboard nav.active ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.dashboard nav.active ul li a {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: hsl(249deg, 10%, 26%);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+}
+.dashboard nav.active ul li a.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.dashboard nav.active ul li a:hover {
+  color: rgb(255, 255, 255);
+}
+
+/*# sourceMappingURL=style.css.map */
