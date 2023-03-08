@@ -20,7 +20,7 @@
         <div class="form-data-trial">
             <p>Try it free 7 days <span>then $20/mo. thereafter</span></p>
         </div>
-        <form action="sign-up.php" method="POST">
+        <form action="index.php" method="POST">
             <div>
                 <input type="text" name="name" placeholder="Name" onfocus="this.placeholder=''" onblur="this.placeholder='Name'" autocomplete="off" value="<?php rememberInputValue('input_name') ?>">
                 <?php showInputError("e_name") ?>

@@ -21,7 +21,7 @@ function handleSection(e) {
     requestOptions.body = formData;
 
     try {
-      await fetch("home-page.php", requestOptions);
+      await fetch("home-page.logic.php", requestOptions);
 
       setTimeout(() => {
         button.firstElementChild.remove();

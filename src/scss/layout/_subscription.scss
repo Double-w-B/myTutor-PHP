@@ -12,7 +12,7 @@
       padding-top: 1rem;
 
       &.active-nav {
-        width: calc(100% - 300px);
+        width: calc(100% - 250px);
       }
 
       &.active-trial {
@@ -166,6 +166,7 @@
             p {
               display: flex;
               align-items: center;
+              hyphens: auto;
 
               img {
                 align-self: flex-start;
@@ -254,7 +255,7 @@
     }
 
     &.active {
-      width: 300px;
+      width: 250px;
 
       * {
         font-size: initial;

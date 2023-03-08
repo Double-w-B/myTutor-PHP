@@ -13,7 +13,7 @@ function showInputError($errorName)
 {
     if (isset($_SESSION[$errorName])) {
         echo "<p>$_SESSION[$errorName]</p>";
-        echo "<img src='./assets/icon-error.svg' alt='error icon'>";
+        echo "<img src='./assets/icon-error.svg' alt=''>";
         unset($_SESSION[$errorName]);
     }
 }

@@ -1,5 +1,10 @@
 <?php
+
 session_start();
+
+if ($_SESSION['signInSuccess']) {
+    header("Location: home-page.php");
+}
 
 if (isset($_POST['email'])) {
 
@@ -91,9 +96,10 @@ if (isset($_POST['email'])) {
         //! Registration success
         if ($passedAll === true) {
             //! insert a new user to DB
-            $sql = "INSERT INTO users( id, name, lastName, email, password, trial, tutorials_id) VALUES ( NULL, :name, :lastName, :email, :password, now() + INTERVAL 7 DAY, :tutorials_id)";
+            $sql = "INSERT INTO users (name, lastName, email, password, trial) VALUES (:name, :lastName, :email, :password, now() + INTERVAL 7 DAY)";
+
             $stmt = $pdo->prepare($sql);
-            $stmt->execute(["name" => $name, "lastName" => $lastName, "email" => $email, "password" => $password_hash, "tutorials_id" => json_encode([])]);
+            $stmt->execute(["name" => $name, "lastName" => $lastName, "email" => $email, "password" => $password_hash,]);
             $_SESSION['registrationSuccess'] = true;
             header("Location: sign-in.php");
         }

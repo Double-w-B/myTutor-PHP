@@ -3,6 +3,10 @@
 
 session_start();
 
+if ($_SESSION['signInSuccess']) {
+    header("Location: home-page.php");
+}
+
 $dateTime = new DateTime();
 $currentDate = $dateTime->format("Y-m-d H:i:s");
 
@@ -37,7 +41,7 @@ if (isset($_POST['email'])) {
     }
 
     if ($password && (strlen($password) < 6 || strlen($password) > 20)) {
-        validationFail("e_password", "Must have from 3 to 20 characters");
+        validationFail("e_password", "Must have from 6 to 20 characters");
     }
 
     //! Remember input values
@@ -56,6 +60,8 @@ if (isset($_POST['email'])) {
             $result = $stmt->fetchAll();
 
 
+
+
             if (count($result) === 0) {
                 validationFail("e_email", "Invalid credentials");
                 validationFail("e_password", "Invalid credentials");
@@ -63,6 +69,8 @@ if (isset($_POST['email'])) {
                 $user = $result[0];
 
                 if (password_verify($password, $user->password)) {
+
+
                     $_SESSION['signInSuccess'] = true;
                     $_SESSION['trialReminder'] = true;
                     $_SESSION['user_id'] = $user->id;

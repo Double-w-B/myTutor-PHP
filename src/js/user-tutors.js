@@ -18,7 +18,7 @@ function handleSection(e) {
     requestOptions.body = formData;
 
     try {
-      await fetch("user-tutors.php", requestOptions);
+      await fetch("user-tutors.logic.php", requestOptions);
 
       setTimeout(() => {
         e.target.closest(".tutorial").remove();

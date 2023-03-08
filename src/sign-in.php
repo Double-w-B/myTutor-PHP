@@ -6,7 +6,7 @@
 
 <header>
     <div class="logo no-select">mytutor</div>
-    <a href='sign-up.php'><span class='sign-in'>sign up</span></a>
+    <a href='index.php'><span class='sign-in'>sign up</span></a>
 </header>
 
 <main class="sign-in">
