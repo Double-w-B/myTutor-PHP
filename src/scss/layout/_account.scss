@@ -12,7 +12,7 @@
       transition: 0.3s linear;
 
       &.active-nav {
-        width: calc(100% - 300px);
+        width: calc(100% - 250px);
       }
 
       section {
@@ -49,6 +49,7 @@
               display: grid;
               grid-template-columns: repeat(12, 1fr);
               grid-template-rows: 45px 35px;
+              position: relative;
 
               input {
                 height: 45px;
@@ -60,15 +61,43 @@
                 transition: 0.2s ease-in-out;
                 background-color: transparent;
 
-                &:first-child {
+                &:nth-child(1) {
                   grid-column: 1/6;
+                  grid-row: 1/2;
                 }
-                &:last-child {
+
+                &:nth-child(2) {
                   grid-column: 8/13;
+                  grid-row: 1/2;
                 }
 
                 &:focus {
                   border-color: $neutral-dark-blue;
+                }
+              }
+
+              p {
+                font-size: 0.8rem;
+                text-align: center;
+                color: $primary-red;
+                grid-column: 8/13;
+                grid-row: 2/3;
+                visibility: hidden;
+
+                &.active {
+                  visibility: visible;
+                }
+              }
+
+              img {
+                width: 20px;
+                position: absolute;
+                top: 12px;
+                right: 1rem;
+                visibility: hidden;
+
+                &.active {
+                  visibility: visible;
                 }
               }
             }
@@ -90,6 +119,10 @@
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
                   rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                   rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              }
+
+              .loading span {
+                top: 15px;
               }
             }
           }
@@ -131,6 +164,10 @@
                   rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                   rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
               }
+
+              .loading span {
+                top: 15px;
+              }
             }
           }
         }
@@ -158,7 +195,7 @@
     }
 
     &.active {
-      width: 300px;
+      width: 250px;
 
       * {
         font-size: initial;
