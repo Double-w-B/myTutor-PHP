@@ -67,7 +67,7 @@ if (isset($_POST['email'])) {
     }
 
     if ($password && (strlen($password) < 6 || strlen($password) > 20)) {
-        validationFail("e_password", "Must have from 3 to 20 characters");
+        validationFail("e_password", "Must have from 6 to 20 characters");
     }
 
     //! password hash
@@ -99,7 +99,7 @@ if (isset($_POST['email'])) {
             $sql = "INSERT INTO users (name, lastName, email, password, trial) VALUES (:name, :lastName, :email, :password, now() + INTERVAL 7 DAY)";
 
             $stmt = $pdo->prepare($sql);
-            $stmt->execute(["name" => $name, "lastName" => $lastName, "email" => $email, "password" => $password_hash,]);
+            $stmt->execute(["name" => $name, "lastName" => $lastName, "email" => $email, "password" => $password_hash]);
             $_SESSION['registrationSuccess'] = true;
             header("Location: sign-in.php");
         }

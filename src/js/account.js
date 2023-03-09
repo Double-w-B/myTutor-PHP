@@ -47,9 +47,21 @@ async function handleDataUpdateForm(e) {
     if (
       input.value &&
       input.name !== "email" &&
+      input.name !== "password" &&
       (input.value.length < 3 || input.value.length > 20)
     ) {
       infoElm.textContent = "Must be between 3 and 20 characters";
+      isError = true;
+      showError(infoElm, infoIcon);
+      submitButton.textContent = "save";
+    }
+    
+    if (
+      input.value &&
+      input.name === "password" &&
+      (input.value.length < 6 || input.value.length > 20)
+    ) {
+      infoElm.textContent = "Must be between 6 and 20 characters";
       isError = true;
       showError(infoElm, infoIcon);
       submitButton.textContent = "save";
@@ -118,7 +130,7 @@ async function handleDeleteAccount(e) {
     await fetch("account.logic.php", requestOptions);
 
     setTimeout(() => {
-      document.location.href = "index.php";
+      window.location.assign("index.php");
     }, 1000);
   } catch (error) {
     console.log(error);

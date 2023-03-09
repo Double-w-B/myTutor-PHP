@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["signInSuccess"])) {
+    header("Location: sign-in.php");
+    exit();
+}
+
+if ($_SESSION['user_trialEnd'] && !$_SESSION['user_subscription']) {
+    header("Location: subscription.php");
+    exit();
+}
+
 function checkIcon($arrKey, $forI)
 {
     if ($arrKey == 0) {
