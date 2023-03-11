@@ -22,9 +22,7 @@
         padding: 0.5rem 1rem 1rem 1rem;
         border-radius: 0.5rem;
         background-color: $white;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        box-shadow: $primary-shadow;
 
         form {
           &:nth-child(1) {
@@ -52,18 +50,16 @@
               position: relative;
 
               input {
+                @include shared.input;
                 height: 45px;
-                outline: none;
-                font-size: 1rem;
-                border: 1px solid $neutral-grayish-blue;
-                border-radius: 0.3rem;
-                padding: 0 1.5rem;
-                transition: 0.2s ease-in-out;
-                background-color: transparent;
 
                 &:nth-child(1) {
                   grid-column: 1/6;
                   grid-row: 1/2;
+                  
+                  &:hover {
+                    cursor: default;
+                  }
                 }
 
                 &:nth-child(2) {
@@ -101,25 +97,12 @@
                 }
               }
             }
+
             button {
+              @include shared.button;
               width: 30%;
               height: 45px;
               margin: 0 2.5% 0 auto;
-              text-transform: uppercase;
-              color: $white;
-              background-color: $primary-green;
-              border-radius: 0.3rem;
-              border: none;
-              cursor: pointer;
-              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
-              &:active {
-                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-                  rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-                  rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-              }
 
               .loading span {
                 top: 15px;
@@ -139,6 +122,7 @@
             h2 {
               color: $primary-red;
             }
+
             p {
               font-size: 0.9rem;
               color: $neutral-dark-blue;
@@ -147,86 +131,14 @@
             }
 
             button {
+              @include shared.button;
               width: 30%;
               height: 45px;
-              text-transform: uppercase;
-              color: $white;
               background-color: $primary-red;
-              border-radius: 0.3rem;
-              border: none;
-              cursor: pointer;
-              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
-              &:active {
-                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-                  rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-                  rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-              }
 
               .loading span {
                 top: 15px;
               }
-            }
-          }
-        }
-      }
-    }
-  }
-  nav {
-    width: 0;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
-    transition: 0.3s linear;
-    padding: 2rem 0 0 0;
-
-    ul {
-      li {
-        a {
-          visibility: hidden;
-          opacity: 0;
-        }
-      }
-    }
-
-    * {
-      font-size: 0;
-    }
-
-    &.active {
-      width: 250px;
-
-      * {
-        font-size: initial;
-      }
-
-      ul {
-        width: 100%;
-        list-style-type: none;
-
-        li {
-          @include shared.centerElements;
-          width: 100%;
-          margin-bottom: 0.5rem;
-
-          a {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            color: $neutral-dark-blue;
-            cursor: pointer;
-            transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out,
-              opacity 0.6s ease-in-out;
-            visibility: visible;
-            opacity: 1;
-
-            &.active {
-              color: $white;
-              font-weight: bold;
-            }
-
-            &:hover {
-              color: $white;
             }
           }
         }

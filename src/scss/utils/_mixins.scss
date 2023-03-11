@@ -1,5 +1,40 @@
+@import "_variables.scss";
+
 @mixin centerElements {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@mixin input {
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid $neutral-grayish-blue;
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+
+  &:hover {
+    cursor: text;
+  }
+
+  &:focus {
+    border-color: $neutral-dark-blue;
+  }
+}
+
+@mixin button {
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  color: $white;
+  box-shadow: $primary-shadow;
+  background-color: $primary-green;
+
+  &:active {
+    box-shadow: $secondary-shadow;
+  }
 }

@@ -3,11 +3,14 @@
 @import "base/_global.scss";
 
 @import "layout/_home-page.scss";
-@import "layout/_header.scss";
-@import "layout/_footer.scss";
 @import "layout/_sign-up.scss";
 @import "layout/_sign-in.scss";
 @import "layout/_account.scss";
 @import "layout/_subscription.scss";
+
+@import "./components/_nav.scss";
+@import "./components/_header.scss";
+@import "./components/_footer.scss";
+@import "./components/_loading-animation.scss";
 
 

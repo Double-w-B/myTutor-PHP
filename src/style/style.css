@@ -51,62 +51,6 @@ main {
   user-select: none;
 }
 
-.loading {
-  display: inline-block;
-  position: relative;
-  height: 100%;
-  width: 80px;
-}
-.loading span {
-  position: absolute;
-  top: 10px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background-color: #fff;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-.loading span:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-.loading span:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.loading span:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.loading span:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
-}
 .dashboard {
   display: flex;
   height: calc(100% - 64px - 24px);
@@ -195,7 +139,7 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 .dashboard main.home-page section .tutorial {
-  height: 380px;
+  height: 400px;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
   padding: 1rem;
@@ -205,7 +149,7 @@ main {
 }
 .dashboard main.home-page section .tutorial picture {
   width: 100%;
-  height: 180px;
+  max-height: 180px;
 }
 .dashboard main.home-page section .tutorial picture img {
   width: 100%;
@@ -244,157 +188,30 @@ main {
 }
 .dashboard main.home-page section .tutorial form {
   width: 100%;
-  height: 35px;
+  min-height: 45px;
   margin: auto 0 0 0;
 }
 .dashboard main.home-page section .tutorial form button {
   width: 100%;
-  height: 100%;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(154deg, 59%, 51%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  height: 100%;
+}
+.dashboard main.home-page section .tutorial form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 .dashboard main.home-page section .tutorial form button.active {
   pointer-events: none;
   box-shadow: none;
   background-color: #342a7a;
 }
-.dashboard main.home-page section .tutorial form button:active {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-}
-.dashboard nav {
-  width: 0;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: 0.3s linear;
-  padding: 2rem 0 0 0;
-}
-.dashboard nav ul li a {
-  visibility: hidden;
-  opacity: 0;
-}
-.dashboard nav * {
-  font-size: 0;
-}
-.dashboard nav.active {
-  width: 250px;
-}
-.dashboard nav.active * {
-  font-size: initial;
-}
-.dashboard nav.active ul {
-  width: 100%;
-  list-style-type: none;
-}
-.dashboard nav.active ul li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-.dashboard nav.active ul li a {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  color: hsl(249deg, 10%, 26%);
-  cursor: pointer;
-  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
-  visibility: visible;
-  opacity: 1;
-}
-.dashboard nav.active ul li a.active {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-}
-.dashboard nav.active ul li a:hover {
-  color: rgb(255, 255, 255);
-}
-
-header {
-  width: 100%;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.4);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transition: 0.3s linear;
-}
-header.active-nav {
-  box-shadow: none;
-  padding-right: 210px;
-}
-header.active-nav button img {
-  width: 35px;
-}
-header .logo {
-  height: 100%;
-  font-size: 1.5rem;
-  color: rgb(255, 255, 255);
-  display: grid;
-  text-transform: uppercase;
-  place-items: center;
-  font-weight: bold;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
-}
-header a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  transition: 0.25s linear;
-}
-header a:active {
-  transform: scale(0.9);
-}
-header a:active span {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-}
-header a span {
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: 0.3s linear;
-  background-color: hsl(249deg, 10%, 26%);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-header button {
-  display: grid;
-  place-items: center;
-  outline: none;
-  border: none;
-  background-color: transparent;
-}
-header button img {
-  width: 40px;
-  cursor: pointer;
-  transition: 0.4s linear;
-}
-header button img:active {
-  transform: scale(0.9);
-}
-
-footer {
-  width: 100%;
-  height: 24px;
-  display: grid;
-  place-content: center;
-  font-size: 0.7rem;
-  color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.4);
-}
-footer a {
-  font-weight: bold;
-  text-decoration: none;
-  letter-spacing: 0.05rem;
-  font-size: 0.7rem;
-  color: hsl(249deg, 10%, 26%);
+.dashboard main.home-page section .tutorial form button .loading span {
+  top: 15px;
 }
 
 main.sign-up {
@@ -462,8 +279,6 @@ main.sign-up .form-data form div {
   position: relative;
 }
 main.sign-up .form-data form div input {
-  width: 100%;
-  height: 45px;
   outline: none;
   font-size: 1rem;
   border: 1px solid hsl(246deg, 25%, 77%);
@@ -471,6 +286,11 @@ main.sign-up .form-data form div input {
   padding: 0 1.5rem;
   transition: 0.2s ease-in-out;
   background-color: transparent;
+  width: 100%;
+  height: 45px;
+}
+main.sign-up .form-data form div input:hover {
+  cursor: text;
 }
 main.sign-up .form-data form div input:focus {
   border-color: hsl(249deg, 10%, 26%);
@@ -486,14 +306,15 @@ main.sign-up .form-data form div img {
   right: 1rem;
 }
 main.sign-up .form-data form button {
-  height: 45px;
+  width: 100%;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(154deg, 59%, 51%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  height: 45px;
 }
 main.sign-up .form-data form button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -562,8 +383,6 @@ main.sign-in .form-data form div {
   position: relative;
 }
 main.sign-in .form-data form div input {
-  width: 100%;
-  height: 45px;
   outline: none;
   font-size: 1rem;
   border: 1px solid hsl(246deg, 25%, 77%);
@@ -571,6 +390,11 @@ main.sign-in .form-data form div input {
   padding: 0 1.5rem;
   transition: 0.2s ease-in-out;
   background-color: transparent;
+  width: 100%;
+  height: 45px;
+}
+main.sign-in .form-data form div input:hover {
+  cursor: text;
 }
 main.sign-in .form-data form div input:focus {
   border-color: hsl(249deg, 10%, 26%);
@@ -586,14 +410,15 @@ main.sign-in .form-data form div img {
   right: 1rem;
 }
 main.sign-in .form-data form button {
-  height: 45px;
+  width: 100%;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(154deg, 59%, 51%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  height: 45px;
 }
 main.sign-in .form-data form button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -656,7 +481,6 @@ main.sign-in .form-data form p a {
   position: relative;
 }
 .dashboard main.account section form:nth-child(1) div input {
-  height: 45px;
   outline: none;
   font-size: 1rem;
   border: 1px solid hsl(246deg, 25%, 77%);
@@ -664,10 +488,20 @@ main.sign-in .form-data form p a {
   padding: 0 1.5rem;
   transition: 0.2s ease-in-out;
   background-color: transparent;
+  height: 45px;
+}
+.dashboard main.account section form:nth-child(1) div input:hover {
+  cursor: text;
+}
+.dashboard main.account section form:nth-child(1) div input:focus {
+  border-color: hsl(249deg, 10%, 26%);
 }
 .dashboard main.account section form:nth-child(1) div input:nth-child(1) {
   grid-column: 1/6;
   grid-row: 1/2;
+}
+.dashboard main.account section form:nth-child(1) div input:nth-child(1):hover {
+  cursor: default;
 }
 .dashboard main.account section form:nth-child(1) div input:nth-child(2) {
   grid-column: 8/13;
@@ -698,16 +532,17 @@ main.sign-in .form-data form p a {
   visibility: visible;
 }
 .dashboard main.account section form:nth-child(1) button {
-  width: 30%;
-  height: 45px;
-  margin: 0 2.5% 0 auto;
+  width: 100%;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(154deg, 59%, 51%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  width: 30%;
+  height: 45px;
+  margin: 0 2.5% 0 auto;
 }
 .dashboard main.account section form:nth-child(1) button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -734,68 +569,23 @@ main.sign-in .form-data form p a {
   margin: 0 0 auto 0;
 }
 .dashboard main.account section form:nth-child(2) button {
-  width: 30%;
-  height: 45px;
+  width: 100%;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(0deg, 100%, 74%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  width: 30%;
+  height: 45px;
+  background-color: hsl(0deg, 100%, 74%);
 }
 .dashboard main.account section form:nth-child(2) button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 .dashboard main.account section form:nth-child(2) button .loading span {
   top: 15px;
-}
-.dashboard nav {
-  width: 0;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: 0.3s linear;
-  padding: 2rem 0 0 0;
-}
-.dashboard nav ul li a {
-  visibility: hidden;
-  opacity: 0;
-}
-.dashboard nav * {
-  font-size: 0;
-}
-.dashboard nav.active {
-  width: 250px;
-}
-.dashboard nav.active * {
-  font-size: initial;
-}
-.dashboard nav.active ul {
-  width: 100%;
-  list-style-type: none;
-}
-.dashboard nav.active ul li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-.dashboard nav.active ul li a {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  color: hsl(249deg, 10%, 26%);
-  cursor: pointer;
-  transition: color 0.3s ease-in-out, visibility 0.6s ease-in-out, opacity 0.6s ease-in-out;
-  visibility: visible;
-  opacity: 1;
-}
-.dashboard nav.active ul li a.active {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-}
-.dashboard nav.active ul li a:hover {
-  color: rgb(255, 255, 255);
 }
 
 .dashboard {
@@ -956,58 +746,59 @@ main.sign-in .form-data form p a {
 }
 .dashboard main.subscription section article.plan form button {
   width: 100%;
-  height: 45px;
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  background-color: hsl(154deg, 59%, 51%);
-  background-color: hsl(249deg, 10%, 26%);
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  height: 45px;
+  background-color: hsl(249deg, 10%, 26%);
+}
+.dashboard main.subscription section article.plan form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 .dashboard main.subscription section article.plan form button.active {
   box-shadow: none;
   pointer-events: none;
 }
-.dashboard main.subscription section article.plan form button:active {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-}
 .dashboard main.subscription section article.plan form button .loading span {
   top: 15px;
 }
-.dashboard nav {
+
+nav {
   width: 0;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.4);
   transition: 0.3s linear;
   padding: 2rem 0 0 0;
 }
-.dashboard nav ul li a {
+nav ul li a {
   visibility: hidden;
   opacity: 0;
 }
-.dashboard nav * {
+nav * {
   font-size: 0;
 }
-.dashboard nav.active {
+nav.active {
   width: 250px;
 }
-.dashboard nav.active * {
+nav.active * {
   font-size: initial;
 }
-.dashboard nav.active ul {
+nav.active ul {
   width: 100%;
   list-style-type: none;
 }
-.dashboard nav.active ul li {
+nav.active ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   margin-bottom: 0.5rem;
 }
-.dashboard nav.active ul li a {
+nav.active ul li a {
   font-size: 1.2rem;
   text-transform: uppercase;
   color: hsl(249deg, 10%, 26%);
@@ -1016,12 +807,152 @@ main.sign-in .form-data form p a {
   visibility: visible;
   opacity: 1;
 }
-.dashboard nav.active ul li a.active {
+nav.active ul li a.active {
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
-.dashboard nav.active ul li a:hover {
+nav.active ul li a:hover {
   color: rgb(255, 255, 255);
+}
+
+header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s linear;
+}
+header.active-nav {
+  box-shadow: none;
+  padding-right: 210px;
+}
+header.active-nav button img {
+  width: 35px;
+}
+header .logo {
+  height: 100%;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  display: grid;
+  text-transform: uppercase;
+  place-items: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+header a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: 0.25s linear;
+}
+header a:active {
+  transform: scale(0.9);
+}
+header a:active span {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+header a span {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s linear;
+  background-color: hsl(249deg, 10%, 26%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+header button {
+  display: grid;
+  place-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+header button img {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.4s linear;
+}
+header button img:active {
+  transform: scale(0.9);
+}
+
+footer {
+  width: 100%;
+  height: 24px;
+  display: grid;
+  place-content: center;
+  font-size: 0.7rem;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  font-size: 0.7rem;
+  color: hsl(249deg, 10%, 26%);
+}
+
+.loading {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 80px;
+}
+.loading span {
+  position: absolute;
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.loading span:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.loading span:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.loading span:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.loading span:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
