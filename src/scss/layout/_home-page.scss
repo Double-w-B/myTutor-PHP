@@ -162,6 +162,7 @@
             button {
               @include shared.button;
               height: 100%;
+              margin: auto 0 0 0;
 
               &.active {
                 pointer-events: none;
@@ -172,6 +173,22 @@
               .loading span {
                 top: 15px;
               }
+            }
+          }
+
+          button {
+            @include shared.button;
+            height: 45px;
+            margin: auto 0 0 0;
+
+            &.active {
+              pointer-events: none;
+              box-shadow: none;
+              background-color: #342a7a;
+            }
+
+            .loading span {
+              top: 15px;
             }
           }
         }

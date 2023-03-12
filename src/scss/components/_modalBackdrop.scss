@@ -1,0 +1,95 @@
+@use "../utils/mixins.scss" as shared;
+
+.modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  background-color: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+  z-index: -10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.show {
+    visibility: visible;
+    z-index: 10;
+  }
+
+  .modal__remove-tutorial {
+    width: 350px;
+    min-height: 200px;
+    color: $neutral-dark-blue;
+    background-color: $white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: $primary-shadow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62%);
+    visibility: visible;
+    z-index: 10;
+    opacity: 0;
+
+    &.show {
+      visibility: visible;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      transition: 0.2s linear;
+      transition-delay: 0.1s;
+    }
+
+    &__btn-close {
+      align-self: flex-end;
+      width: 5px;
+      height: 5px;
+      position: relative;
+
+      img {
+        width: 20px;
+        display: block;
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:active {
+          transform: scale(0.8);
+        }
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      span {
+        font-weight: bold;
+        color: $accent-blue;
+      }
+    }
+
+    form {
+      width: 100%;
+      height: 45px;
+      margin-top: 1rem;
+
+      button {
+        @include shared.button;
+        height: 100%;
+        background-color: $primary-red;
+      }
+
+      .loading span {
+        top: 15px;
+      }
+    }
+  }
+}

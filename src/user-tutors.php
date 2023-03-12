@@ -14,7 +14,7 @@
         <?php if (count($userTutorials) > 0) : ?>
             <section>
                 <?php foreach ($userTutorials as $tutorial) : ?>
-                    <div class="tutorial">
+                    <div class="tutorial" id="<?= $tutorial->id ?>">
                         <picture>
                             <img src="<?= $tutorial->img ?>" alt="">
                         </picture>
@@ -27,10 +27,7 @@
                             </div>
                         </div>
 
-                        <form>
-                            <input type="hidden" name="removeTutorialIdFromDB" value="<?= $tutorial->id ?>">
-                            <button type="submit">remove from my tutors</button>
-                        </form>
+                        <button type="button">remove from my tutors</button>
                     </div>
                 <?php endforeach; ?>
             </section>
@@ -59,6 +56,7 @@
 </div>
 
 <?php include "./inc/footer.php" ?>
+<?php include "./inc/modal.php" ?>
 
 <script type="module" src="./js/user-tutors.js"></script>
 <script src="./js/menu.js"></script>

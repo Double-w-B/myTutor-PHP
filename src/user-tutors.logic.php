@@ -1,5 +1,4 @@
 <?php
-require_once "./config/database.php";
 
 session_start();
 
@@ -16,6 +15,14 @@ if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
 
+require_once "./config/database.php";
+
+$sql = 'SELECT * FROM tutorials';
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$tutorials = $stmt->fetchAll();
+
+$userTutorials = array_filter($tutorials, fn ($tutorial) => in_array($tutorial->id, $_SESSION['user_tutorials_id']));
 
 if (isset($_POST['removeTutorialIdFromDB'])) {
     $tutorialId = array_search($_POST['removeTutorialIdFromDB'], $_SESSION["user_tutorials_id"]);
@@ -27,10 +34,3 @@ if (isset($_POST['removeTutorialIdFromDB'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $savedTutorials]);
 }
-
-$sql = 'SELECT * FROM tutorials';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$tutorials = $stmt->fetchAll();
-
-$userTutorials = array_filter($tutorials, fn ($tutorial) => in_array($tutorial->id, $_SESSION['user_tutorials_id']));
