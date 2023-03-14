@@ -58,9 +58,20 @@ if (isset($_POST["name"])) {
 if (isset($_POST['accountDelete'])) {
     require_once "./config/database.php";
 
-    $sql = "DELETE FROM users WHERE id = :id";
+    $sql = 'SELECT * FROM users WHERE id=?';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user_id']]);
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
 
-    unset($_SESSION["signInSuccess"]);
+    $password = $_POST['accountDelete'];
+
+    if (password_verify($password, $user->password)) {
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(["id" => $_SESSION['user_id']]);
+
+        unset($_SESSION["signInSuccess"]);
+    } else {
+        http_response_code(401);
+    }
 }

@@ -42,12 +42,13 @@
                 </div>
                 <button type="submit">Save</button>
             </form>
-            <form class="account-delete">
+
+            <div class="account-delete">
                 <h2>Danger zone</h2>
                 <p>Once you delete the account, there is no going back. Please be certain.</p>
                 <input type="hidden" name="accountDelete">
-                <button type="submit">delete account</button>
-            </form>
+                <button>delete account</button>
+            </div>
 
 
         </section>
@@ -65,6 +66,7 @@
 </div>
 
 <?php include "./inc/footer.php" ?>
+<?php include "./inc/modal.php" ?>
 
-<script type="module" src="./js/account.js"></script>
+<script type="module" src="./js/account-delete.js"></script>
 <script src="./js/menu.js"></script>

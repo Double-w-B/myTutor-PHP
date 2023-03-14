@@ -11,4 +11,20 @@
         </form>
     </div>
 
+    <div class="modal__delete-account">
+        <div class="modal__delete-account__btn-close">
+            <img src="./assets/icon-close.svg" alt="">
+        </div>
+        <p>Confirm password to continue</p>
+        <p>Your account and all your tutorials will be permanently deleted.</p>
+        <form>
+            <input type="password" name="accountDelete" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" autocomplete="off">
+            <p class="infoMsg"></p>
+            <img src="./assets/icon-error.svg" alt="">
+            <button type="submit">delete</button>
+        </form>
+    </div>
+
+
+
 </div>

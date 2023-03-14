@@ -574,7 +574,7 @@ main.sign-in .form-data form p a {
 .dashboard main.account section form:nth-child(1) button .loading span {
   top: 15px;
 }
-.dashboard main.account section form:nth-child(2) {
+.dashboard main.account section div {
   width: 100%;
   height: 20%;
   margin: 0 auto;
@@ -583,16 +583,16 @@ main.sign-in .form-data form p a {
   flex-direction: column;
   justify-content: space-between;
 }
-.dashboard main.account section form:nth-child(2) h2 {
+.dashboard main.account section div h2 {
   color: hsl(0deg, 100%, 74%);
 }
-.dashboard main.account section form:nth-child(2) p {
+.dashboard main.account section div p {
   font-size: 0.9rem;
   color: hsl(249deg, 10%, 26%);
   opacity: 0.4;
   margin: 0 0 auto 0;
 }
-.dashboard main.account section form:nth-child(2) button {
+.dashboard main.account section div button {
   width: 100%;
   text-transform: uppercase;
   border-radius: 0.3rem;
@@ -605,10 +605,10 @@ main.sign-in .form-data form p a {
   height: 45px;
   background-color: hsl(0deg, 100%, 74%);
 }
-.dashboard main.account section form:nth-child(2) button:active {
+.dashboard main.account section div button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
-.dashboard main.account section form:nth-child(2) button .loading span {
+.dashboard main.account section div button .loading span {
   top: 15px;
 }
 
@@ -997,8 +997,6 @@ footer a {
   z-index: 10;
 }
 .modal__backdrop .modal__remove-tutorial {
-  width: 350px;
-  min-height: 200px;
   color: hsl(249deg, 10%, 26%);
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
@@ -1011,17 +1009,19 @@ footer a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -62%);
-  visibility: visible;
-  z-index: 10;
+  visibility: hidden;
   opacity: 0;
+  z-index: -10;
+  width: 350px;
+  min-height: 200px;
 }
 .modal__backdrop .modal__remove-tutorial.show {
   visibility: visible;
-  z-index: 10;
-  transform: translate(-50%, -50%);
   opacity: 1;
+  z-index: 10;
   transition: 0.2s linear;
   transition-delay: 0.1s;
+  transform: translate(-50%, -50%);
 }
 .modal__backdrop .modal__remove-tutorial__btn-close {
   align-self: flex-end;
@@ -1069,6 +1069,124 @@ footer a {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 .modal__backdrop .modal__remove-tutorial form .loading span {
+  top: 15px;
+}
+.modal__backdrop .modal__delete-account {
+  color: hsl(249deg, 10%, 26%);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+  visibility: hidden;
+  opacity: 0;
+  z-index: -10;
+  width: 350px;
+  min-height: 200px;
+}
+.modal__backdrop .modal__delete-account.show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+  transition: 0.2s linear;
+  transition-delay: 0.1s;
+  transform: translate(-50%, -50%);
+}
+.modal__backdrop .modal__delete-account__btn-close {
+  align-self: flex-end;
+  width: 5px;
+  height: 5px;
+  position: relative;
+}
+.modal__backdrop .modal__delete-account__btn-close img {
+  width: 20px;
+  display: block;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.modal__backdrop .modal__delete-account__btn-close img:active {
+  transform: scale(0.8);
+}
+.modal__backdrop .modal__delete-account p {
+  color: hsl(249deg, 10%, 26%);
+}
+.modal__backdrop .modal__delete-account p:nth-of-type(1) {
+  font-size: 1.1rem;
+}
+.modal__backdrop .modal__delete-account p:nth-of-type(2) {
+  font-size: 0.9rem;
+  opacity: 0.4;
+}
+.modal__backdrop .modal__delete-account form {
+  width: 100%;
+  height: 130px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.modal__backdrop .modal__delete-account form input {
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid hsl(246deg, 25%, 77%);
+  border-radius: 0.3rem;
+  padding: 0 1.5rem;
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+  width: 100%;
+  height: 45px;
+}
+.modal__backdrop .modal__delete-account form input:hover {
+  cursor: text;
+}
+.modal__backdrop .modal__delete-account form input:focus {
+  border-color: hsl(249deg, 10%, 26%);
+}
+.modal__backdrop .modal__delete-account form p.infoMsg {
+  font-size: 0.8rem;
+  text-align: center;
+  color: hsl(0deg, 100%, 74%);
+  visibility: hidden;
+}
+.modal__backdrop .modal__delete-account form p.infoMsg.active {
+  visibility: visible;
+}
+.modal__backdrop .modal__delete-account form img {
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  right: 1rem;
+  visibility: hidden;
+}
+.modal__backdrop .modal__delete-account form img.active {
+  visibility: visible;
+}
+.modal__backdrop .modal__delete-account form button {
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  height: 45px;
+  background-color: hsl(0deg, 100%, 74%);
+}
+.modal__backdrop .modal__delete-account form button:active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.modal__backdrop .modal__delete-account form .loading span {
   top: 15px;
 }
 
