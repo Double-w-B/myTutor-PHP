@@ -37,9 +37,7 @@ function handleSectionClick(e) {
 async function handleDeleteButton(e) {
   e.preventDefault();
 
-  const loadingAnimation = utils.createLoadingAnimation();
-  buttonDelete.textContent = "";
-  buttonDelete.append(loadingAnimation);
+  utils.addLoadingAnimation(buttonDelete);
 
   const formData = new FormData(this);
   requestOptions.method = "POST";

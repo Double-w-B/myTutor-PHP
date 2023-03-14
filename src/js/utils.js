@@ -31,3 +31,9 @@ export function createCallToAction() {
   container.append(heading, pElm, pElmLink);
   main.append(container);
 }
+
+export function addLoadingAnimation(elm) {
+  const loadingAnimation = createLoadingAnimation();
+  elm.textContent = "";
+  elm.append(loadingAnimation);
+}
