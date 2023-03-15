@@ -74,7 +74,8 @@
     }
   }
 
-  .modal__delete-account {
+  .modal__delete-account,
+  .modal__update-account {
     @include shared.modal;
     width: 350px;
     min-height: 200px;
@@ -165,5 +166,9 @@
         top: 15px;
       }
     }
+  }
+
+  .modal__update-account form button{
+    background-color: $primary-green;
   }
 }

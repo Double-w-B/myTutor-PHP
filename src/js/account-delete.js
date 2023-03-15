@@ -15,6 +15,7 @@ const requestOptions = {};
 let isError = false;
 
 function showError(p, img) {
+  isError = true;
   p.classList.add("active");
   img.classList.add("active");
 
@@ -50,7 +51,6 @@ async function handleDeleteAcc(e) {
   if (!input.value) {
     infoElm.textContent = "Please provide value";
     showError(infoElm, infoIcon);
-    isError = true;
   }
 
   if (!isError) {
@@ -65,7 +65,6 @@ async function handleDeleteAcc(e) {
           if (response.status === 401) {
             infoElm.textContent = "Invalid credentials";
             showError(infoElm, infoIcon);
-            isError = true;
           }
         }, 1000);
 

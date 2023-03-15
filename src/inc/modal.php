@@ -25,6 +25,18 @@
         </form>
     </div>
 
-
+    <div class="modal__update-account">
+        <div class="modal__update-account__btn-close">
+            <img src="./assets/icon-close.svg" alt="">
+        </div>
+        <p>Confirm password to continue</p>
+        <p>To change the email or password confirm current password.</p>
+        <form>
+            <input type="password" name="passwordCheck" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" autocomplete="off">
+            <p class="infoMsg"></p>
+            <img src="./assets/icon-error.svg" alt="">
+            <button type="submit">save</button>
+        </form>
+    </div>
 
 </div>

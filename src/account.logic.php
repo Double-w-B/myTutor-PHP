@@ -12,15 +12,29 @@ if ($_SESSION['user_trialEnd'] && !$_SESSION['user_subscription']) {
 }
 
 if (isset($_POST["name"])) {
+    require_once "./config/database.php";
 
     $name = $_POST['name'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $passwordCheck = $_POST['passwordCheck'];
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
+    if (isset($_POST['passwordCheck'])) {
+        $sql = 'SELECT * FROM users WHERE id = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_SESSION['user_id']]);
+        $user = $stmt->fetch();
+
+        if (!password_verify($passwordCheck, $user->password)) {
+            http_response_code(401);
+            exit();
+        }
+        unset($_POST['passwordCheck']);
+    }
+
     try {
-        require_once "./config/database.php";
 
         $dataKeys = array_keys($_POST);
 
@@ -58,7 +72,7 @@ if (isset($_POST["name"])) {
 if (isset($_POST['accountDelete'])) {
     require_once "./config/database.php";
 
-    $sql = 'SELECT * FROM users WHERE id=?';
+    $sql = 'SELECT * FROM users WHERE id = ?';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();

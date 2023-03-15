@@ -69,4 +69,5 @@
 <?php include "./inc/modal.php" ?>
 
 <script type="module" src="./js/account-delete.js"></script>
+<script type="module" src="./js/account-update.js"></script>
 <script src="./js/menu.js"></script>
