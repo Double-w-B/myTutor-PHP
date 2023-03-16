@@ -26,7 +26,6 @@ function handleSection(e) {
       await fetch("subscription.logic.php", requestOptions);
 
       setTimeout(() => {
-        console.log(trial);
         if (trial == null) {
           const article = document.createElement("article");
           article.className = "trial";

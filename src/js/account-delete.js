@@ -3,7 +3,7 @@ import * as utils from "./utils.js";
 const modalBackdrop = document.querySelector(".modal__backdrop");
 const modalDeleteAcc = modalBackdrop.querySelector(".modal__delete-account");
 
-const deleteAccBtn = document.querySelector("div.account-delete");
+const deleteAccBtn = document.querySelector("div.account-delete button");
 const deleteAccForm = modalDeleteAcc.querySelector("form");
 const deleteAccInput = deleteAccForm.querySelector("input");
 const deleteAccCloseBtn = modalDeleteAcc.querySelector("img");

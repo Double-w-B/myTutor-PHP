@@ -22,9 +22,19 @@ const updateAccDeleteBtn = modalUpdateData.querySelector(
 );
 const emailRegExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 const requestOptions = {};
+const inputsToUpdate = [];
 
 let isError = false;
 let isAuthorized = true;
+
+function showSuccess(p) {
+  p.textContent = "Updated!";
+  p.classList.add("active", "success");
+
+  setTimeout(() => {
+    p.classList.remove("active", "success");
+  }, 1500);
+}
 
 function showError(p, img) {
   isError = true;
@@ -63,6 +73,14 @@ function updateUserData(elm) {
       input.value = "";
     });
 
+    dataUpdateInputs.forEach((input) => {
+      const infoElm = input.parentElement.querySelector("p");
+      if (inputsToUpdate.includes(input.name)) {
+        showSuccess(infoElm);
+      }
+    });
+
+    inputsToUpdate.length = 0;
     elm.textContent = "save";
     isAuthorized = true;
 
@@ -127,6 +145,10 @@ async function handleDataUpdateForm(e) {
     requestOptions.method = "POST";
     requestOptions.body = formData;
 
+    for (const pair of formData.entries()) {
+      if (pair[1]) inputsToUpdate.push(pair[0]);
+    }
+
     utils.addLoadingAnimation(dataUpdateSubmitBtn);
 
     try {
@@ -151,12 +173,6 @@ async function handleDataUpdateConfirm(e) {
 
   const infoElm = updateAccInput.parentElement.querySelector("p");
   const infoIcon = updateAccInput.parentElement.querySelector("img");
-  const formData = new FormData();
-
-  dataUpdateInputs.forEach((input) => formData.append(input.name, input.value));
-  formData.append(updateAccInput.name, updateAccInput.value);
-  requestOptions.method = "POST";
-  requestOptions.body = formData;
 
   if (!updateAccInput.value) {
     infoElm.textContent = "Please provide value";
@@ -164,6 +180,18 @@ async function handleDataUpdateConfirm(e) {
   }
 
   if (!isError) {
+    const formData = new FormData();
+    dataUpdateInputs.forEach((input) =>
+      formData.append(input.name, input.value)
+    );
+    formData.append(updateAccInput.name, updateAccInput.value);
+    requestOptions.method = "POST";
+    requestOptions.body = formData;
+
+    for (const pair of formData.entries()) {
+      if (pair[1] !== "") inputsToUpdate.push(pair[0]);
+    }
+
     utils.addLoadingAnimation(updateAccDeleteBtn);
 
     try {
