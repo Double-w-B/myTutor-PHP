@@ -1,10 +1,10 @@
 <?php
 
-
 session_start();
 
-if ($_SESSION['signInSuccess']) {
+if (isset($_SESSION['signInSuccess'])) {
     header("Location: home-page.php");
+    exit();
 }
 
 $dateTime = new DateTime();
@@ -97,7 +97,7 @@ if (isset($_POST['email'])) {
                 }
             }
         } catch (Exception $e) {
-            echo "<p class='error'>Server error. Please, try again later</p>";
+            echo "<p>Server error. Please, try again later</p>";
         }
     }
 }

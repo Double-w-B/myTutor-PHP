@@ -2,8 +2,9 @@
 
 session_start();
 
-if ($_SESSION['signInSuccess']) {
+if (isset($_SESSION['signInSuccess'])) {
     header("Location: home-page.php");
+    exit();
 }
 
 if (isset($_POST['email'])) {
@@ -104,6 +105,6 @@ if (isset($_POST['email'])) {
             header("Location: sign-in.php");
         }
     } catch (Exception $e) {
-        echo "<p class='error'>Server error. Please, try again later</p>";
+        echo "<p>Server error. Please, try again later</p>";
     }
 }
