@@ -1,19 +1,19 @@
 <?php
 
-function rememberInputValue($inputValue)
+function showInputError($errorName)
 {
-    if (isset($_SESSION[$inputValue])) {
-        echo $_SESSION[$inputValue];
-        unset($_SESSION[$inputValue]);
+    if (isset($_SESSION['errors'][$errorName])) {
+        echo "<p>{$_SESSION['errors'][$errorName]}</p>";
+        echo "<img src='./assets/icon-error.svg' alt=''>";
+        unset($_SESSION['errors'][$errorName]);
     }
 }
 
-
-function showInputError($errorName)
+function dd($value)
 {
-    if (isset($_SESSION[$errorName])) {
-        echo "<p>$_SESSION[$errorName]</p>";
-        echo "<img src='./assets/icon-error.svg' alt=''>";
-        unset($_SESSION[$errorName]);
-    }
+    echo '<pre>';
+    var_dump($value);
+    echo '</pre>';
+
+    die();
 }

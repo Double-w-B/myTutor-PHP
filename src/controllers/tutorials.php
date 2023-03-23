@@ -31,3 +31,6 @@ $sql = 'SELECT * FROM tutorials';
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $tutorials = $stmt->fetchAll();
+
+
+require "views/tutorials.view.php";

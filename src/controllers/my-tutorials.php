@@ -34,3 +34,5 @@ if (isset($_POST['removeTutorialIdFromDB'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(["id" => $_SESSION['user_id'], "tutorials_id" => $savedTutorials]);
 }
+
+require "views/my-tutorials.view.php";

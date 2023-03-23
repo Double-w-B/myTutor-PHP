@@ -1,5 +1,4 @@
-<?php require_once "home-page.logic.php" ?>
-<?php include "./inc/head.php" ?>
+<?php include "partials/head.php" ?>
 
 <header>
     <div class="logo no-select">mytutor</div>
@@ -9,7 +8,7 @@
 <div class="dashboard">
     <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) && !$_SESSION['user_trialEnd'] ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
-        <?php include "./inc/trial-reminder.php" ?>
+        <?php include "partials/trial-reminder.php" ?>
 
         <section>
             <?php foreach ($tutorials as $tutorial) : ?>
@@ -49,8 +48,8 @@
     </nav>
 </div>
 
-<?php include "./inc/footer.php" ?>
+<?php include "partials/footer.php" ?>
 
-<script type="module" src="./js/home-page.js"></script>
+<!-- <script type="module" src="./js/home-page.js"></script>
 <script src="./js/menu.js"></script>
-<script src="./js/trial-reminder.js"></script>
+<script src="./js/trial-reminder.js"></script> -->

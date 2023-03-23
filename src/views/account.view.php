@@ -1,6 +1,4 @@
-<?php require_once "account.logic.php" ?>
-<?php require_once "utils.php" ?>
-<?php include "./inc/head.php" ?>
+<?php include "partials/head.php" ?>
 
 
 <header>
@@ -65,9 +63,9 @@
     </nav>
 </div>
 
-<?php include "./inc/footer.php" ?>
-<?php include "./inc/modal.php" ?>
+<?php include "partials/footer.php" ?>
+<?php include "partials/modal.php" ?>
 
-<script type="module" src="./js/account-delete.js"></script>
+<!-- <script type="module" src="./js/account-delete.js"></script>
 <script type="module" src="./js/account-update.js"></script>
-<script src="./js/menu.js"></script>
+<script src="./js/menu.js"></script> -->

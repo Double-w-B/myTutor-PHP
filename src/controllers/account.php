@@ -64,7 +64,7 @@ if (isset($_POST["name"])) {
             }
         }
     } catch (Exception $e) {
-        echo "<p>Server error. Please, try again later</p>";
+        echo "Server error. Please, try again later.";
     }
 }
 
@@ -89,3 +89,5 @@ if (isset($_POST['accountDelete'])) {
         http_response_code(401);
     }
 }
+
+require "views/account.view.php";

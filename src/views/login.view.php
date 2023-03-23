@@ -1,12 +1,10 @@
-<?php require_once "sign-in.logic.php" ?>
-<?php include "./inc/head.php" ?>
-<?php require_once "utils.php" ?>
+<?php include "partials/head.php" ?>
 
 
 
 <header>
     <div class="logo no-select">mytutor</div>
-    <a href='index.php'><span class='sign-in'>sign up</span></a>
+    <a href='/'><span class='sign-in'>sign up</span></a>
 </header>
 
 <main class="sign-in">
@@ -39,4 +37,4 @@
 </main>
 
 
-<?php include "./inc/footer.php" ?>
+<?php include "partials/footer.php" ?>

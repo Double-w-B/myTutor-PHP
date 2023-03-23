@@ -48,3 +48,4 @@ if (isset($_POST["subscriptionPlan"])) {
 }
 
 
+require "views/subscription.view.php";

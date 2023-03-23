@@ -1,5 +1,4 @@
-<?php require_once "subscription.logic.php" ?>
-<?php include "./inc/head.php" ?>
+<?php include "partials/head.php" ?>
 
 <header>
     <div class="logo no-select">mytutor</div>
@@ -9,7 +8,7 @@
 <div class="dashboard">
     <main class="subscription" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
-        <?php include "./inc/trial-reminder.php" ?>
+        <?php include "partials/trial-reminder.php" ?>
 
         <section>
             <?php foreach ($subscriptions as $key => $subscription) : ?>
@@ -56,8 +55,8 @@
     </nav>
 </div>
 
-<?php include "./inc/footer.php" ?>
+<?php include "partials/footer.php" ?>
 
-<script type="module" src="./js/subscription.js"></script>
+<!-- <script type="module" src="./js/subscription.js"></script>
 <script src="./js/menu.js"></script>
-<script src="./js/trial-reminder.js"></script>
+<script src="./js/trial-reminder.js"></script> -->

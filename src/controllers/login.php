@@ -97,7 +97,9 @@ if (isset($_POST['email'])) {
                 }
             }
         } catch (Exception $e) {
-            echo "<p>Server error. Please, try again later</p>";
+            echo "Server error. Please, try again later.";
         }
     }
 }
+
+require "views/login.view.php";
