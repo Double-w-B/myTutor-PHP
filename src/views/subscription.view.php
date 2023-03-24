@@ -13,7 +13,7 @@
         <section>
             <?php foreach ($subscriptions as $key => $subscription) : ?>
 
-                <article class="plan <?= ($key + 1) == $_SESSION['user_subscription'] ? "active" : "" ?>">
+                <article class="plan <?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "active" : "" ?>">
                     <div class="plan__title">
                         <p><?= $subscription->name ?></p>
                     </div>
@@ -33,8 +33,8 @@
                     </div>
                     <form action="subscription.logic.php">
                         <input type="hidden" name="subscriptionPlan" value="<?= ($key + 1) ?>">
-                        <button type="submit" class="<?= ($key + 1) == $_SESSION['user_subscription'] ? "active" : "" ?>">
-                            <?= ($key + 1) == $_SESSION['user_subscription'] ? "my plan" : "select" ?>
+                        <button type="submit" class="<?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "active" : "" ?>">
+                            <?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "my plan" : "select" ?>
                         </button>
                     </form>
                 </article>
@@ -43,20 +43,13 @@
         </section>
 
     </main>
-    <nav>
-        <ul>
-            <li><a href='account.php'>account</a></li>
-            <li><a href='user-tutors.php'>my tutors</a></li>
-            <li><a href='home-page.php'>all tutors</a></li>
-            <li><a href='#' class="active">subscription</a></li>
-            <li><a href='sign-out.logic.php'>sign out</a></li>
-        </ul>
 
-    </nav>
+    <?php include "partials/nav.php" ?>
+
 </div>
 
 <?php include "partials/footer.php" ?>
 
-<!-- <script type="module" src="./js/subscription.js"></script>
+<script type="module" src="./js/subscription.js"></script>
 <script src="./js/menu.js"></script>
-<script src="./js/trial-reminder.js"></script> -->
+<script src="./js/trial-reminder.js"></script>

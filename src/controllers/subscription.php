@@ -2,12 +2,12 @@
 session_start();
 
 if (!isset($_SESSION["signInSuccess"])) {
-    header("Location: sign-in.php");
+    header("location: /login");
     exit();
 }
 
-if ($_SESSION['user_trialEnd'] && !$_SESSION['user_subscription']) {
-    header("Location: subscription.php");
+if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
+    header("location: /subscription");
     exit();
 }
 
@@ -42,9 +42,9 @@ $subscriptions = $stmt->fetchAll();
 if (isset($_POST["subscriptionPlan"])) {
     $sql = "UPDATE users SET subscription_id = :subscription_id WHERE id = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user_id'], "subscription_id" => $_POST["subscriptionPlan"]]);
-    $_SESSION['user_subscription'] = $_POST["subscriptionPlan"];
-    $_SESSION['user_trialEnd'] = false;
+    $stmt->execute(["id" => $_SESSION['user']['id'], "subscription_id" => $_POST["subscriptionPlan"]]);
+    $_SESSION['user']['subscription_id'] = $_POST["subscriptionPlan"];
+    $_SESSION['user']['trialEnd'] = false;
 }
 
 

@@ -3,15 +3,15 @@
 session_start();
 
 if (!isset($_SESSION["signInSuccess"])) {
-    header("Location: sign-in.php");
+    header("location: /login");
     exit();
 }
-if ($_SESSION['user_trialEnd'] && !$_SESSION['user_subscription']) {
-    header("Location: subscription.php");
+if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
+    header("location: /subscription");
     exit();
 }
 
-if (isset($_POST["name"])) {
+if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
     require_once "./config/database.php";
 
     $name = $_POST['name'];
@@ -24,7 +24,7 @@ if (isset($_POST["name"])) {
     if (isset($_POST['passwordCheck'])) {
         $sql = 'SELECT * FROM users WHERE id = ?';
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$_SESSION['user_id']]);
+        $stmt->execute([$_SESSION['user']['id']]);
         $user = $stmt->fetch();
 
         if (!password_verify($passwordCheck, $user->password)) {
@@ -38,7 +38,7 @@ if (isset($_POST["name"])) {
 
         $dataKeys = array_keys($_POST);
 
-        $params['id'] = $_SESSION['user_id'];
+        $params['id'] = $_SESSION['user']['id'];
         $dataCondArray = [];
 
         for ($i = 0; $i < count($dataKeys); $i++) {
@@ -60,7 +60,7 @@ if (isset($_POST["name"])) {
 
         for ($i = 0; $i < count($dataKeys); $i++) {
             if ($_POST[$dataKeys[$i]] && $_POST[$dataKeys[$i]] !== "password") {
-                $_SESSION["user_" . $dataKeys[$i]] = $_POST[$dataKeys[$i]];
+                $_SESSION["user"][$dataKeys[$i]] = $_POST[$dataKeys[$i]];
             }
         }
     } catch (Exception $e) {
@@ -74,7 +74,7 @@ if (isset($_POST['accountDelete'])) {
 
     $sql = 'SELECT * FROM users WHERE id = ?';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_SESSION['user_id']]);
+    $stmt->execute([$_SESSION['user']['id']]);
     $user = $stmt->fetch();
 
     $password = $_POST['accountDelete'];
@@ -82,7 +82,7 @@ if (isset($_POST['accountDelete'])) {
     if (password_verify($password, $user->password)) {
         $sql = "DELETE FROM users WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(["id" => $_SESSION['user_id']]);
+        $stmt->execute(["id" => $_SESSION['user']['id']]);
 
         unset($_SESSION["signInSuccess"]);
     } else {
