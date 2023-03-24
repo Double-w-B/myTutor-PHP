@@ -1,29 +1,26 @@
 <?php include "partials/head.php" ?>
 
-
-
 <header>
     <div class="logo no-select">mytutor</div>
-    <a href='/'><span class='sign-in'>sign up</span></a>
+    <a href='/'><span class='sign-in'>register</span></a>
 </header>
 
 <main class="sign-in">
 
     <div class="form-data">
 
-        <form action="sign-in.php" method="POST">
-            <h2>Sign in to your account</h2>
+        <form method="POST">
+            <h2>Log in to your account</h2>
 
             <div>
-                <input type="email" name="email" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" autocomplete="off" value="<?php rememberInputValue('input_email') ?>">
-                <?php showInputError("e_email") ?>
+                <input type="email" name="email" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" autocomplete="off" value="<?= $_POST['email'] ?? "" ?>">
+                <?php showInputError("email") ?>
             </div>
             <div>
-                <input type="password" name="password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" autocomplete="off" value="<?php rememberInputValue('input_password') ?>">
-                <?php showInputError("e_password") ?>
-
+                <input type="password" name="password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" autocomplete="off" value="<?= $_POST['password'] ?? "" ?>">
+                <?php showInputError("password") ?>
             </div>
-            <button type="submit">Sign In</button>
+            <button type="submit">Log In</button>
             <p>By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
         </form>
     </div>
