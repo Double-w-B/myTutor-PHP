@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
     exit();
@@ -73,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (empty($_SESSION['errors'])) {
 
-        require "./config/database.php";
+        require base_path("config/database.php");
 
         try {
             $sql = 'SELECT * FROM users WHERE email = ?';
@@ -98,4 +96,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-require "views/registration.view.php";
+require view("registration.view.php");

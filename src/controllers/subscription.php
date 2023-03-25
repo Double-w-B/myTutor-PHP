@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
@@ -32,7 +31,7 @@ function checkIcon($arrKey, $forI)
     }
 }
 
-require_once "./config/database.php";
+require base_path("config/database.php");
 
 $sql = 'SELECT * FROM subscriptions';
 $stmt = $pdo->prepare($sql);
@@ -48,4 +47,4 @@ if (isset($_POST["subscriptionPlan"])) {
 }
 
 
-require "views/subscription.view.php";
+require view("subscription.view.php");

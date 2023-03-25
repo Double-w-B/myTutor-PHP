@@ -1,7 +1,7 @@
 <?php
-require_once "./config/database.php";
 
-session_start();
+
+require base_path("config/database.php");
 
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
@@ -30,6 +30,7 @@ $sql = 'SELECT * FROM tutorials';
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $tutorials = $stmt->fetchAll();
+ 
 
 
-require "views/tutorials.view.php";
+require view("tutorials.view.php");

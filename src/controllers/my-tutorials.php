@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
     exit();
@@ -15,7 +13,7 @@ if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
 
-require_once "./config/database.php";
+require base_path("config/database.php");
 
 $sql = 'SELECT * FROM tutorials';
 $stmt = $pdo->prepare($sql);
@@ -35,4 +33,4 @@ if (isset($_POST['removeTutorialIdFromDB'])) {
     $stmt->execute(["id" => $_SESSION['user']['id'], "tutorials_id" => $savedTutorials]);
 }
 
-require "views/my-tutorials.view.php";
+require view("my-tutorials.view.php");

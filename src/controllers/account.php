@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
     exit();
@@ -12,7 +10,7 @@ if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
-    require_once "./config/database.php";
+    require base_path("config/database.php");
 
     $name = $_POST['name'];
     $lastName = $_POST['lastName'];
@@ -70,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
 
 
 if (isset($_POST['accountDelete'])) {
-    require_once "./config/database.php";
+    require base_path("config/database.php");
 
     $sql = 'SELECT * FROM users WHERE id = ?';
     $stmt = $pdo->prepare($sql);
@@ -90,4 +88,4 @@ if (isset($_POST['accountDelete'])) {
     }
 }
 
-require "views/account.view.php";
+require view("account.view.php");

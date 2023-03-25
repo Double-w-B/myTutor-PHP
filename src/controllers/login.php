@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+
+$dateTime = new DateTime();
+$currentDate = $dateTime->format("Y-m-d H:i:s");
 
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
@@ -39,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     if (empty($_SESSION['errors'])) {
-        require_once "./config/database.php";
+        require base_path("config/database.php");
+
 
         try {
             //! check email in DB
@@ -47,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
             if (!$user) {
                 validationFail("email", "Invalid credentials");
@@ -81,4 +83,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-require "views/login.view.php";
+require view("login.view.php");
