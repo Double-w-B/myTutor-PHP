@@ -79,7 +79,7 @@ if (isset($_POST['accountDelete'])) {
         $sql = "DELETE FROM users WHERE id = ?";
         $db->query($sql, [$user['id']]);
 
-        unset($_SESSION["signInSuccess"]);
+        logout();
     } else {
         http_response_code(401);
     }

@@ -1,6 +1,3 @@
-<?php 
+<?php
 
-unset($_SESSION["signInSuccess"]);
-header("location: /");
-
-?>
+logout();
