@@ -1,13 +1,14 @@
 <?php
 
-
-$dateTime = new DateTime();
-$currentDate = $dateTime->format("Y-m-d H:i:s");
+use Classes\Database;
 
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
     exit();
 }
+
+$dateTime = new DateTime();
+$currentDate = $dateTime->format("Y-m-d H:i:s");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -41,15 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     if (empty($_SESSION['errors'])) {
-        require base_path("config/database.php");
-
 
         try {
+
+            $config = require base_path("config/database.php");
+            $db = new Database($config["database"]);
+
             //! check email in DB
             $sql = 'SELECT * FROM users WHERE email = ?';
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$email]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = $db->query($sql, [$email])->findOne();
 
             if (!$user) {
                 validationFail("email", "Invalid credentials");

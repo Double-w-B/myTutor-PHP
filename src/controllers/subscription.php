@@ -1,5 +1,7 @@
 <?php
 
+use Classes\Database;
+
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
     exit();
@@ -10,38 +12,16 @@ if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
     exit();
 }
 
-function checkIcon($arrKey, $forI)
-{
-    if ($arrKey == 0) {
-        if ($forI === 3 || $forI === 4 || $forI === 5 || $forI === 6 || $forI === 7) {
-            return "cross";
-        } else {
-            return "check";
-        }
-    }
-    if ($arrKey == 1) {
-        if ($forI === 5 || $forI === 6 || $forI === 7) {
-            return "cross";
-        } else {
-            return "check";
-        }
-    }
-    if ($arrKey == 2) {
-        return "check";
-    }
-}
-
-require base_path("config/database.php");
+$config = require base_path("config/database.php");
+$db = new Database($config["database"]);
 
 $sql = 'SELECT * FROM subscriptions';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$subscriptions = $stmt->fetchAll();
+$subscriptions = $db->query($sql)->getAll();
 
 if (isset($_POST["subscriptionPlan"])) {
     $sql = "UPDATE users SET subscription_id = :subscription_id WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user']['id'], "subscription_id" => $_POST["subscriptionPlan"]]);
+    $db->query($sql,["id" => $_SESSION['user']['id'], "subscription_id" => $_POST["subscriptionPlan"]]);
+
     $_SESSION['user']['subscription_id'] = $_POST["subscriptionPlan"];
     $_SESSION['user']['trialEnd'] = false;
 }

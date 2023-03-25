@@ -152,7 +152,7 @@ async function handleDataUpdateForm(e) {
     utils.addLoadingAnimation(dataUpdateSubmitBtn);
 
     try {
-      const response = await fetch("account.logic.php", requestOptions);
+      const response = await fetch("/account", requestOptions);
 
       if (!response.ok) {
         setTimeout(() => {
@@ -195,7 +195,7 @@ async function handleDataUpdateConfirm(e) {
     utils.addLoadingAnimation(updateAccDeleteBtn);
 
     try {
-      const response = await fetch("account.logic.php", requestOptions);
+      const response = await fetch("/account", requestOptions);
 
       if (!response.ok) {
         setTimeout(() => {

@@ -14,21 +14,21 @@
             <?php foreach ($tutorials as $tutorial) : ?>
                 <div class="tutorial">
                     <picture>
-                        <img src="<?= $tutorial->img ?>" alt="">
+                        <img src="<?= $tutorial['img'] ?>" alt="">
                     </picture>
                     <div class="tutorial-details__content">
-                        <h4><?= $tutorial->title ?></h4>
-                        <p>Created by <?= $tutorial->created_by ?></p>
+                        <h4><?= $tutorial['title'] ?></h4>
+                        <p>Created by <?= $tutorial['created_by'] ?></p>
                         <div class="tutorial-details__content__info">
-                            <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial->modules ?></p>
-                            <p><img src="./assets/icon-clock.svg" alt="">Hours: <?= $tutorial->hours ?></p>
+                            <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial['modules'] ?></p>
+                            <p><img src="./assets/icon-clock.svg" alt="">Hours: <?= $tutorial['hours'] ?></p>
                         </div>
                     </div>
 
                     <form>
-                        <input type="hidden" name="addTutorialIdToDB" value="<?= $tutorial->id ?>">
-                        <button type="submit" style='<?= in_array($tutorial->id, $_SESSION['user']["tutorials_id"]) ? "pointer-events: none; box-shadow: none; background-color: #342A7A;" : "" ?>'>
-                            <?= !in_array($tutorial->id, $_SESSION['user']["tutorials_id"]) ? 'add to my tutors' : 'in progress' ?>
+                        <input type="hidden" name="addTutorialIdToDB" value="<?= $tutorial['id'] ?>">
+                        <button type="submit" style='<?= in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "pointer-events: none; box-shadow: none; background-color: #342A7A;" : "" ?>'>
+                            <?= !in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? 'add to my tutors' : 'in progress' ?>
                         </button>
                     </form>
                 </div>
@@ -41,6 +41,6 @@
 
 <?php include "partials/footer.php" ?>
 
-<script type="module" src="./js/home-page.js"></script>
+<script type="module" src="./js/tutorials.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/trial-reminder.js"></script>

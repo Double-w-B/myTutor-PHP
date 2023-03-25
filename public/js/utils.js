@@ -24,7 +24,7 @@ export function createCallToAction() {
   const pElmLinkTextNode = document.createTextNode("Go and find your ");
   const link = document.createElement("a");
   link.textContent = "tutor";
-  link.setAttribute("href", "home-page.php");
+  link.setAttribute("href", "/tutorials");
 
   pElmLink.append(pElmLinkTextNode, link);
 

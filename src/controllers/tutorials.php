@@ -1,7 +1,6 @@
 <?php
 
-
-require base_path("config/database.php");
+use Classes\Database;
 
 if (!isset($_SESSION["signInSuccess"])) {
     header("location: /login");
@@ -12,6 +11,9 @@ if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
     exit();
 }
 
+$config = require base_path("config/database.php");
+$db = new Database($config["database"]);
+
 if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
@@ -21,16 +23,15 @@ if (isset($_POST['addTutorialIdToDB']) && !in_array($_POST['addTutorialIdToDB'],
     $savedTutorials = implode(",", $_SESSION['user']['tutorials_id']);
 
     $sql = "UPDATE users SET tutorials_id = :tutorials_id WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $_SESSION['user']['id'], "tutorials_id" => $savedTutorials]);
+    $db->query($sql, ["id" => $_SESSION['user']['id'], "tutorials_id" => $savedTutorials]);
 }
 
-
 $sql = 'SELECT * FROM tutorials';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$tutorials = $stmt->fetchAll();
- 
+$tutorials = $db->query($sql)->getAll();
+
+
+
+
 
 
 require view("tutorials.view.php");

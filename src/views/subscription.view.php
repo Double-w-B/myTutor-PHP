@@ -15,20 +15,20 @@
 
                 <article class="plan <?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "active" : "" ?>">
                     <div class="plan__title">
-                        <p><?= $subscription->name ?></p>
+                        <p><?= $subscription['name'] ?></p>
                     </div>
 
                     <div class="plan__benefits">
-                        <?php for ($i = 0; $i < count(explode(";", $subscription->benefits)); $i++) : ?>
+                        <?php for ($i = 0; $i < count(explode(";", $subscription['benefits'])); $i++) : ?>
                             <p>
                                 <img src="./assets/icon-<?= checkIcon($key, $i) ?>.svg" alt="">
-                                <span><?= explode(";", $subscription->benefits)[$i] ?></span>
+                                <span><?= explode(";", $subscription['benefits'])[$i] ?></span>
                             </p>
                         <?php endfor ?>
                     </div>
 
                     <div class="plan__price">
-                        <p><?= $subscription->price ?>$</p>
+                        <p><?= $subscription['price'] ?>$</p>
                         <p>per month</p>
                     </div>
                     <form action="subscription.logic.php">

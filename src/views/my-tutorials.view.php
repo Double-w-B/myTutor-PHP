@@ -13,16 +13,16 @@
         <?php if (count($userTutorials) > 0) : ?>
             <section>
                 <?php foreach ($userTutorials as $tutorial) : ?>
-                    <div class="tutorial" id="<?= $tutorial->id ?>">
+                    <div class="tutorial" id="<?= $tutorial['id'] ?>">
                         <picture>
-                            <img src="<?= $tutorial->img ?>" alt="">
+                            <img src="<?= $tutorial['img'] ?>" alt="">
                         </picture>
                         <div class="tutorial-details__content">
-                            <h4><?= $tutorial->title ?></h4>
-                            <p>Created by <?= $tutorial->created_by ?></p>
+                            <h4><?= $tutorial['title'] ?></h4>
+                            <p>Created by <?= $tutorial['created_by'] ?></p>
                             <div class="tutorial-details__content__info">
-                                <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial->modules ?></p>
-                                <p><img src="./assets/icon-clock.svg" alt="">Hours: <?= $tutorial->hours ?></p>
+                                <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial['modules'] ?></p>
+                                <p><img src="./assets/icon-clock.svg" alt="">Hours: <?= $tutorial['hours'] ?></p>
                             </div>
                         </div>
 
@@ -43,12 +43,12 @@
 
     </main>
 
-<?php include "partials/nav.php" ?>
+    <?php include "partials/nav.php" ?>
 </div>
 
 <?php include "partials/footer.php" ?>
 <?php include "partials/modal.php" ?>
 
-<script type="module" src="./js/user-tutors.js"></script>
+<script type="module" src="./js/my-tutorials.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/trial-reminder.js"></script>

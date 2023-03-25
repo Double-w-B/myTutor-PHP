@@ -23,7 +23,7 @@ function handleSection(e) {
     requestOptions.body = formData;
 
     try {
-      await fetch("subscription.logic.php", requestOptions);
+      await fetch("/subscription", requestOptions);
 
       setTimeout(() => {
         if (trial == null) {
@@ -34,7 +34,7 @@ function handleSection(e) {
             "Good choice! Now it's time to find your next "
           );
           const link = document.createElement("a");
-          link.setAttribute("href", "home-page.php");
+          link.setAttribute("href", "/tutorials");
           link.textContent = "tutor";
           trialPElm.append(pElmTextNode, link);
           article.append(trialPElm);
@@ -52,7 +52,7 @@ function handleSection(e) {
             "Good choice! Now it's time to find your next "
           );
           const link = document.createElement("a");
-          link.setAttribute("href", "home-page.php");
+          link.setAttribute("href", "/tutorials");
           link.textContent = "tutor";
           trialPElm.append(pElmTextNode, link);
           trialCloseButton?.closest("form").remove();

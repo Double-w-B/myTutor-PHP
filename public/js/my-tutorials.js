@@ -45,7 +45,7 @@ async function handleDeleteButton(e) {
 
   try {
     const allTutorials = document.querySelectorAll(".tutorial");
-    const response = await fetch("user-tutors.logic.php", requestOptions);
+    const response = await fetch("/my-tutorials", requestOptions);
 
     if (!response.ok) {
       buttonDelete.textContent = "delete";

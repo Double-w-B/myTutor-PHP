@@ -1,10 +1,11 @@
 <?php
 
+use Classes\Database;
+
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
     exit();
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -12,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     {
         $_SESSION['errors'][$errorName] = $errorTxt;
     }
-
 
     //! check name
     $name = $_POST['name'];
@@ -71,21 +71,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (empty($_SESSION['errors'])) {
 
-        require base_path("config/database.php");
+        $config = require base_path("config/database.php");
+        $db = new Database($config["database"]);
 
         try {
             $sql = 'SELECT * FROM users WHERE email = ?';
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$email]);
-            $users = $stmt->fetch();
+            $user = $db->query($sql, [$email]);
 
             if ($users) {
                 validationFail("email", "E-mail already exists");
             } else {
-                $sql = "INSERT INTO users (name, lastName, email, password, trial) VALUES (:name, :lastName, :email, :password, now() + INTERVAL 7 DAY)";
+                $sql = "INSERT INTO users (name, lastName, email, password, trial) VALUES (?, ?, ?, ?, now() + INTERVAL 7 DAY)";
+                $db->query($sql, [$name, $lastName, $email, $password_hash]);
 
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(["name" => $name, "lastName" => $lastName, "email" => $email, "password" => $password_hash]);
                 header("location: /login");
             }
         } catch (Exception $e) {

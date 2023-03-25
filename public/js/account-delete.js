@@ -57,7 +57,7 @@ async function handleDeleteAcc(e) {
     utils.addLoadingAnimation(deleteAccDeleteBtn);
 
     try {
-      const response = await fetch("account.logic.php", requestOptions);
+      const response = await fetch("/account", requestOptions);
 
       if (!response.ok) {
         setTimeout(() => {
@@ -72,7 +72,7 @@ async function handleDeleteAcc(e) {
       }
 
       setTimeout(() => {
-        window.location.assign("index.php");
+        window.location.assign("/");
       }, 1000);
     } catch (error) {
       console.log(error);
