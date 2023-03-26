@@ -1,5 +1,6 @@
 <?php
 $navLinks = ['account', 'tutorials', 'my-tutorials',  'subscription', 'logout'];
+$url = parse_url($_SERVER['REQUEST_URI'])['path'];
 ?>
 
 <nav>

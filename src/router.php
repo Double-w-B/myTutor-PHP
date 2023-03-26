@@ -15,12 +15,11 @@ $routes = [
 
 function routeToController($url, $routes)
 {
-    if (array_key_exists($url, $routes)) {
-        require $routes[$url];
-    } else {
-        echo "router problem";
-        exit();
+    if (!array_key_exists($url, $routes)) {
+        abort();
     }
+    
+    require $routes[$url];
 }
 
 routeToController($url, $routes);
