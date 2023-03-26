@@ -1,6 +1,7 @@
 <?php
 
 use Classes\Database;
+use Classes\Validator;
 
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
@@ -9,62 +10,27 @@ if (isset($_SESSION['signInSuccess'])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    function validationFail($errorName, $errorTxt)
-    {
-        $_SESSION['errors'][$errorName] = $errorTxt;
-    }
-
     //! check name
     $name = $_POST['name'];
-
-    if (!$name) {
-        validationFail("name", "Please provide value");
-    }
-
-    if ($name && ((strlen($name) < 3) || (strlen($name) > 20))) {
-        validationFail("name", "Must have from 3 to 20 characters");
-    }
-
-    if ($name && ctype_alnum($name) == false) {
-        validationFail("name", "Only latin letters allowed");
-    }
+    Validator::string('name', $name);
+    Validator::string_len('name', $name, 3, 20);
+    Validator::string_latin('name', $name);
 
     //! check last name
     $lastName = $_POST['lastName'];
-
-    if (!$lastName) {
-        validationFail("lastName", "Please provide value");
-    }
-
-    if ($lastName && ((strlen($lastName) < 3) || (strlen($lastName) > 20))) {
-        validationFail("lastName", "Must have from 3 to 20 characters");
-    }
-
-    if ($lastName && ctype_alnum($lastName) == false) {
-        validationFail("lastName", "Only latin letters allowed");
-    }
+    Validator::string('lastName', $lastName);
+    Validator::string_len('lastName', $lastName, 3, 20);
+    Validator::string_latin('lastName', $lastName);
 
     //! check email
     $email = $_POST['email'];
-    $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-    if (!$email) {
-        validationFail("email", "Please provide value");
-    }
-
-    if ($email && filter_var($email, FILTER_VALIDATE_EMAIL) == false || $emailB !== $email) {
-        validationFail("email", "Check your email value");
-    }
+    Validator::string('email', $email);
+    Validator::email('email', $email);
 
     //! check password
     $password = $_POST['password'];
-
-    if (!$password) {
-        validationFail("password", "Please provide value");
-    }
-
-    if ($password && (strlen($password) < 6 || strlen($password) > 20)) {
-        validationFail("password", "Must have from 6 to 20 characters");
-    }
+    Validator::string('password', $password);
+    Validator::string_len('password', $password, 6, 20);
 
     //! password hash
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -76,9 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
             $sql = 'SELECT * FROM users WHERE email = ?';
-            $user = $db->query($sql, [$email]);
+            $user = $db->query($sql, [$email])->findOne();
 
-            if ($users) {
+            if ($user) {
                 validationFail("email", "E-mail already exists");
             } else {
                 $sql = "INSERT INTO users (name, lastName, email, password, trial) VALUES (?, ?, ?, ?, now() + INTERVAL 7 DAY)";

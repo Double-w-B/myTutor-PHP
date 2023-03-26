@@ -1,6 +1,7 @@
 <?php
 
 use Classes\Database;
+use Classes\Validator;
 
 if (isset($_SESSION['signInSuccess'])) {
     header("location: /tutorials");
@@ -12,39 +13,19 @@ $currentDate = $dateTime->format("Y-m-d H:i:s");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    function validationFail($errorName, $errorTxt)
-    {
-        $_SESSION['errors'][$errorName] = $errorTxt;
-    }
-
     //! check email
     $email = $_POST['email'];
-    $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-    if (!$email) {
-        validationFail("email", "Please provide value");
-    }
-
-    if ($email && filter_var($email, FILTER_VALIDATE_EMAIL) == false || $emailB !== $email) {
-        validationFail("email", "Check your email value");
-    }
+    Validator::string('email', $email);
+    Validator::email('email', $email);
 
     //! check password
     $password = $_POST['password'];
-
-    if (!$password) {
-        validationFail("password", "Please provide value");
-    }
-
-    if ($password && (strlen($password) < 6 || strlen($password) > 20)) {
-        validationFail("password", "Must have from 6 to 20 characters");
-    }
-
+    Validator::string('password', $password);
+    Validator::string_len('password', $password, 6, 20);
 
     if (empty($_SESSION['errors'])) {
 
         try {
-
             $config = require base_path("config/database.php");
             $db = new Database($config["database"]);
 

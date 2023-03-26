@@ -57,3 +57,8 @@ function logout()
     setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
     header("location: /");
 }
+
+function validationFail($errorName, $errorTxt)
+{
+    $_SESSION['errors'][$errorName] = $errorTxt;
+}

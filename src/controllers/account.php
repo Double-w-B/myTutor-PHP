@@ -16,9 +16,6 @@ $db = new Database($config["database"]);
 
 if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
 
-    $name = $_POST['name'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
     $password = $_POST['password'];
     $passwordCheck = $_POST['passwordCheck'];
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -67,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
     }
 }
 
-
 if (isset($_POST['accountDelete'])) {
 
     $sql = 'SELECT * FROM users WHERE id = ?';
@@ -75,14 +71,15 @@ if (isset($_POST['accountDelete'])) {
 
     $password = $_POST['accountDelete'];
 
-    if (password_verify($password, $user['password'])) {
-        $sql = "DELETE FROM users WHERE id = ?";
-        $db->query($sql, [$user['id']]);
-
-        logout();
-    } else {
+    if (!password_verify($password, $user['password'])) {
         http_response_code(401);
+        exit();
     }
+
+    $sql = "DELETE FROM users WHERE id = ?";
+    $db->query($sql, [$user['id']]);
+
+    logout();
 }
 
 require view("account.view.php");
