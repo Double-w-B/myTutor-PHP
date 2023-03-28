@@ -7,11 +7,6 @@ if (!isset($_SESSION["signInSuccess"])) {
     exit();
 }
 
-if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
-    header("location: /subscription");
-    exit();
-}
-
 $config = require base_path("config/database.php");
 $db = new Database($config["database"]);
 

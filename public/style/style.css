@@ -343,6 +343,9 @@ main.sign-up .form-data form button {
 main.sign-up .form-data form button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
+main.sign-up .form-data form button .loading span {
+  top: 15px;
+}
 main.sign-up .form-data form p {
   text-align: center;
   font-size: 0.7rem;
@@ -446,6 +449,9 @@ main.sign-in .form-data form button {
 }
 main.sign-in .form-data form button:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+main.sign-in .form-data form button .loading span {
+  top: 15px;
 }
 main.sign-in .form-data form p {
   text-align: center;

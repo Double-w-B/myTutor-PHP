@@ -7,9 +7,7 @@ const requestOptions = {};
 function handleSection(e) {
   if (e.target.tagName !== "BUTTON" && e.target.type !== "submit") return;
 
-  const loadingAnimation = utils.createLoadingAnimation();
-  e.target.textContent = "";
-  e.target.append(loadingAnimation);
+  utils.addLoadingAnimation(e.target);
 
   e.target.closest("form").addEventListener("submit", async function (e) {
     e.preventDefault();

@@ -42,3 +42,6 @@
 
 </main>
 <?php include "partials/footer.php" ?>
+
+
+<script type="module" src="./js/auth.js"></script>

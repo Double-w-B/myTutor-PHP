@@ -1,11 +1,16 @@
 @use "../utils/_mixins" as shared;
 
 main {
-  &.sign-up {
+  &.sign-in {
     width: 85%;
     height: calc(100% - 64px - 24px);
     margin: 0 auto;
     display: flex;
+
+    h2 {
+      text-align: center;
+      color: $neutral-dark-blue;
+    }
 
     .cta {
       width: 50%;
@@ -23,6 +28,10 @@ main {
 
       p {
         color: $white;
+
+        &:first-of-type {
+          margin-bottom: 1rem;
+        }
       }
     }
 
@@ -33,30 +42,9 @@ main {
       flex-direction: column;
       justify-content: center;
 
-      &-trial {
-        width: 75%;
-        height: 50px;
-        margin: 0 auto 2rem auto;
-        display: grid;
-        place-items: center;
-        border-radius: 0.5rem;
-        background-color: $neutral-dark-blue;
-        box-shadow: $primary-shadow;
-
-        p {
-          color: $white;
-          font-size: 0.9rem;
-          font-weight: bold;
-
-          span {
-            font-weight: normal;
-          }
-        }
-      }
-
       form {
         width: 75%;
-        height: 65%;
+        height: 60%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -93,6 +81,10 @@ main {
         button {
           @include shared.button;
           height: 45px;
+
+          .loading span {
+            top: 15px;
+          }
         }
 
         p {

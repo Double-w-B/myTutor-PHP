@@ -25,7 +25,7 @@ $trialEndTime = $dateTime->diff($userTrialDate)->format("%d");
         <p>Hey,
             <span><?= ucfirst($_SESSION['user']['name']) ?></span>! Free trial ends in
             <span><?= $trialEndTime > 1 ? "$trialEndTime days" : " $trialEndTime day" ?></span>, upgrade your subscription
-            <a href="subscription.php">now</a>.
+            <a href="/subscription">now</a>.
         </p>
         <form>
             <input type="hidden" name="trial-close-btn" value="">
