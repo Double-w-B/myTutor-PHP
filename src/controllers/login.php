@@ -39,6 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
 
                 if (password_verify($password, $user['password'])) {
+
+                    $sql = 'SELECT tutorial_id FROM tutorials_users WHERE user_id = ?';
+                    $user_tutorials_ids_result = $db->query($sql, [$user['id']])->getAll();
+                    $user_tutorials_ids = array_map(fn ($tutorial) => $tutorial["tutorial_id"], $user_tutorials_ids_result);
+
+                    $sql = 'SELECT subscription_id FROM subscription_users WHERE user_id = ?';
+                    $subscription_id_result = $db->query($sql, [$user['id']])->findOne();
+                    $subscription_id = $subscription_id_result["subscription_id"] ?? NULL;
+
+
                     $_SESSION['signInSuccess'] = true;
                     $_SESSION['trialReminder'] = true;
                     $_SESSION['user']['trialEnd'] = $currentDate > $user['trial'];
@@ -47,11 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $_SESSION['user'][$column] = $user[$column];
                     }
 
-                    if (strlen($user['tutorials_id']) > 0) {
-                        $_SESSION['user']['tutorials_id'] = explode(",", $user['tutorials_id']);
-                    } else {
-                        $_SESSION['user']['tutorials_id'] = [];
-                    }
+                    $_SESSION['user']['tutorials_id'] = $user_tutorials_ids;
+                    $_SESSION['user']['subscription_id'] = $subscription_id;
+
 
                     header("location: /tutorials");
                 } else {

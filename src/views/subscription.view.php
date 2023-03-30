@@ -31,7 +31,7 @@
                         <p><?= $subscription['price'] ?>$</p>
                         <p>per month</p>
                     </div>
-                    <form action="subscription.logic.php">
+                    <form>
                         <input type="hidden" name="subscriptionPlan" value="<?= ($key + 1) ?>">
                         <button type="submit" class="<?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "active" : "" ?>">
                             <?= ($key + 1) == $_SESSION['user']['subscription_id'] ? "my plan" : "select" ?>

@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_POST['accountDelete']) {
 
         $dataCond = implode(",", $dataCondArray);
 
-        $sql = "UPDATE users SET " . $dataCond . " WHERE id = :id";
+        $sql = "UPDATE users SET " . $dataCond . ", updated_at = now() WHERE id = :id";
         $db->query($sql, $params);
 
         for ($i = 0; $i < count($dataKeys); $i++) {

@@ -10,12 +10,20 @@ if (!isset($_SESSION["signInSuccess"])) {
 $config = require base_path("config/database.php");
 $db = new Database($config["database"]);
 
-$sql = 'SELECT * FROM subscriptions';
+$sql = 'SELECT * FROM subscription_plans';
 $subscriptions = $db->query($sql)->getAll();
 
 if (isset($_POST["subscriptionPlan"])) {
-    $sql = "UPDATE users SET subscription_id = :subscription_id WHERE id = :id";
-    $db->query($sql,["id" => $_SESSION['user']['id'], "subscription_id" => $_POST["subscriptionPlan"]]);
+    $userId = $_SESSION['user']['id'];
+    $subscriptionId = (int) $_POST["subscriptionPlan"];
+
+    if (!$_SESSION['user']['subscription_id']) {
+        $sql = "INSERT INTO subscription_users (subscription_id, user_id) VALUES (?, ?)";
+        $db->query($sql, [$subscriptionId, $userId]);
+    } else {
+        $sql = "UPDATE subscription_users SET subscription_id = ?, updated_at = now() WHERE user_id = ?";
+        $db->query($sql, [$subscriptionId, $userId]);
+    }
 
     $_SESSION['user']['subscription_id'] = $_POST["subscriptionPlan"];
     $_SESSION['user']['trialEnd'] = false;

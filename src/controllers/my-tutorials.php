@@ -18,18 +18,21 @@ if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
 
+if (isset($_POST['removeTutorialIdFromDB'])) {
+    $tutorialIdKey = array_search($_POST['removeTutorialIdFromDB'], $_SESSION['user']["tutorials_id"]);
+    $userId = $_SESSION['user']['id'];
+    $tutorialId = intval($_SESSION['user']["tutorials_id"][$tutorialIdKey]);
+
+    $sql = "DELETE FROM tutorials_users WHERE tutorial_id = :tutorial_id AND user_id = :user_id";
+    $db->query($sql, [":tutorial_id" => $tutorialId, "user_id" => $userId]);
+    
+    unset($_SESSION['user']["tutorials_id"][$tutorialIdKey]);
+}
+
 $sql = 'SELECT * FROM tutorials';
 $tutorials = $db->query($sql)->getAll();
 
 $userTutorials = array_filter($tutorials, fn ($tutorial) => in_array($tutorial['id'], $_SESSION['user']['tutorials_id']));
 
-if (isset($_POST['removeTutorialIdFromDB'])) {
-    $tutorialId = array_search($_POST['removeTutorialIdFromDB'], $_SESSION['user']["tutorials_id"]);
-    unset($_SESSION['user']["tutorials_id"][$tutorialId]);
-    $savedTutorials = implode(",", $_SESSION['user']['tutorials_id']);
-
-    $sql = "UPDATE users SET tutorials_id = :tutorials_id WHERE id = :id";
-    $db->query($sql, ["id" => $_SESSION['user']['id'], "tutorials_id" => $savedTutorials]);
-}
 
 require view("my-tutorials.view.php");

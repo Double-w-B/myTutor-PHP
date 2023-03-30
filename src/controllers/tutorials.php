@@ -19,19 +19,17 @@ if (isset($_POST['trial-close-btn'])) {
 }
 
 if (isset($_POST['addTutorialIdToDB']) && !in_array($_POST['addTutorialIdToDB'], $_SESSION['user']["tutorials_id"])) {
-    array_push($_SESSION['user']['tutorials_id'], $_POST['addTutorialIdToDB']);
-    $savedTutorials = implode(",", $_SESSION['user']['tutorials_id']);
 
-    $sql = "UPDATE users SET tutorials_id = :tutorials_id WHERE id = :id";
-    $db->query($sql, ["id" => $_SESSION['user']['id'], "tutorials_id" => $savedTutorials]);
+    array_push($_SESSION['user']['tutorials_id'], $_POST['addTutorialIdToDB']);
+    $tutorialId = $_POST['addTutorialIdToDB'];
+    $userId = $_SESSION['user']['id'];
+
+    $sql = "INSERT INTO tutorials_users (tutorial_id, user_id, start_date) VALUES (?, ?, now())";
+    $db->query($sql, [$tutorialId, $userId]);
 }
 
 $sql = 'SELECT * FROM tutorials';
 $tutorials = $db->query($sql)->getAll();
-
-
-
-
 
 
 require view("tutorials.view.php");
