@@ -9,6 +9,8 @@ $routes = [
     "/tutorials" => "controllers/tutorials.php",
     "/account" => "controllers/account.php",
     "/my-tutorials" => "controllers/my-tutorials.php",
+    "/my-tutorials/user-tutorial" => "controllers/user-tutorial.php",
+    "/my-tutorials/user-tutorial-data" => "controllers/user-tutorial-data.php",
     "/subscription" => "controllers/subscription.php",
 ];
 

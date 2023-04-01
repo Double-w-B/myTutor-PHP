@@ -25,7 +25,10 @@ if (isset($_POST['removeTutorialIdFromDB'])) {
 
     $sql = "DELETE FROM tutorials_users WHERE tutorial_id = :tutorial_id AND user_id = :user_id";
     $db->query($sql, [":tutorial_id" => $tutorialId, "user_id" => $userId]);
-    
+
+    $sql = "DELETE FROM tutorials_sections_users WHERE tutorial_id = :tutorial_id AND user_id = :user_id";
+    $db->query($sql, [":tutorial_id" => $tutorialId, "user_id" => $userId]);
+
     unset($_SESSION['user']["tutorials_id"][$tutorialIdKey]);
 }
 

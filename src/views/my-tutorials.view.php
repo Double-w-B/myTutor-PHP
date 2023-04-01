@@ -18,7 +18,12 @@
                             <img src="<?= $tutorial['img'] ?>" alt="">
                         </picture>
                         <div class="tutorial-details__content">
-                            <h4><?= $tutorial['title'] ?></h4>
+                            <h4>
+                                <a href="/my-tutorials/user-tutorial?id=<?= $tutorial['id'] ?>">
+                                    <?= $tutorial['title'] ?>
+                                </a>
+                            </h4>
+
                             <p>Created by <?= $tutorial['created_by'] ?></p>
                             <div class="tutorial-details__content__info">
                                 <p><img src="./assets/icon-bars-tutorial.svg" alt="">Modules: <?= $tutorial['modules'] ?></p>

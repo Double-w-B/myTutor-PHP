@@ -9,9 +9,9 @@ function showMenu() {
   header.classList.toggle("active-nav");
 
   if (nav.classList.contains("active")) {
-    headerMenuIcon.src = "./assets/icon-close.svg";
+    headerMenuIcon.src = "../assets/icon-close.svg";
   } else {
-    headerMenuIcon.src = "./assets/icon-bars-menu.svg";
+    headerMenuIcon.src = "../assets/icon-bars-menu.svg";
   }
 }
 

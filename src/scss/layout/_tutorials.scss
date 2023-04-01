@@ -125,6 +125,11 @@
             h4 {
               margin-bottom: 0.5rem;
               color: $accent-blue;
+
+              a {
+                text-decoration: none;
+                color: $accent-blue;
+              }
             }
 
             p {
