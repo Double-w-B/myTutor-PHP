@@ -1,14 +1,17 @@
+import * as utils from "./utils.js";
+
 const tutorialDesc = document.querySelector("#desc");
-const btn = document.querySelector("#show-more");
+const buttonShowMore = document.querySelector("#show-more");
+const formEnrollNow = document.querySelector("section form");
+const buttonEnrollNow = formEnrollNow.querySelector("button");
 const id = window.location.search.split("=")[1];
-const checkButtons = document.querySelectorAll("article form");
 const requestOptions = {};
 
 let responseDesc;
 
 async function handleOnload() {
   try {
-    const response = await fetch(`/my-tutorials/user-tutorial-data?id=${id}`);
+    const response = await fetch(`/tutorials/tutorial-data?id=${id}`);
     const data = await response.json();
     responseDesc = data.tutorial.tutorial_desc;
   } catch (error) {
@@ -16,41 +19,39 @@ async function handleOnload() {
   }
 }
 
-function handleBtn() {
-  if (btn.textContent === "Show More") {
+function handleShowMore() {
+  if (buttonShowMore.textContent === "Show More") {
     tutorialDesc.textContent = responseDesc;
-    btn.textContent = "Show Less";
+    buttonShowMore.textContent = "Show Less";
   } else {
     tutorialDesc.textContent = `${responseDesc.substr(0, 200)} ...`;
-    btn.textContent = "Show More";
+    buttonShowMore.textContent = "Show More";
   }
 }
 
-checkButtons.forEach((form) => {
-  async function submitForm(e) {
-    e.preventDefault();
+function handleEnrollNow() {
+  utils.addLoadingAnimation(buttonEnrollNow);
+}
 
-    const button = form.querySelector("button");
+async function handleSubmitEnrollNow(e) {
+  e.preventDefault();
 
-    const formData = new FormData(this);
-    requestOptions.method = "POST";
-    requestOptions.body = formData;
+  const formData = new FormData(this);
+  requestOptions.method = "POST";
+  requestOptions.body = formData;
 
-    try {
-      await fetch(`/my-tutorials/user-tutorial-data?id=${id}`, requestOptions);
+  try {
+    await fetch("/tutorials/tutorial-data", requestOptions);
 
-      if (button.classList.contains("checked")) {
-        button.classList.remove("checked");
-        return;
-      }
-      button.classList.add("checked");
-    } catch (error) {
-      console.log(error);
-    }
+    setTimeout(() => {
+      window.location.assign(`/tutorials-user/tutorial-user?id=${id}`);
+    }, 1000);
+  } catch (error) {
+    console.log(error);
   }
-
-  form.addEventListener("submit", submitForm);
-});
+}
 
 window.addEventListener("load", handleOnload);
-btn?.addEventListener("click", handleBtn);
+buttonShowMore?.addEventListener("click", handleShowMore);
+buttonEnrollNow.addEventListener("click", handleEnrollNow);
+formEnrollNow.addEventListener("submit", handleSubmitEnrollNow);

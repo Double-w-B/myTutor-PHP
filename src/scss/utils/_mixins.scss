@@ -33,9 +33,14 @@
   color: $white;
   box-shadow: $primary-shadow;
   background-color: $primary-green;
-
+  transition: 0.25s ease-in-out;
+  
   &:active {
     box-shadow: $secondary-shadow;
+  }
+
+  &:hover {
+    opacity: 0.9;
   }
 }
 

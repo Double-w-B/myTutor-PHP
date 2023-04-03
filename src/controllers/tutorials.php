@@ -11,25 +11,23 @@ if ($_SESSION['user']['trialEnd'] && !$_SESSION['user']['subscription_id']) {
     exit();
 }
 
-$config = require base_path("config/database.php");
-$db = new Database($config["database"]);
-
 if (isset($_POST['trial-close-btn'])) {
     unset($_SESSION['trialReminder']);
 }
 
-if (isset($_POST['addTutorialIdToDB']) && !in_array($_POST['addTutorialIdToDB'], $_SESSION['user']["tutorials_id"])) {
-
-    array_push($_SESSION['user']['tutorials_id'], $_POST['addTutorialIdToDB']);
-    $tutorialId = $_POST['addTutorialIdToDB'];
-    $userId = $_SESSION['user']['id'];
-
-    $sql = "INSERT INTO tutorials_users (tutorial_id, user_id, start_date) VALUES (?, ?, now())";
-    $db->query($sql, [$tutorialId, $userId]);
-}
+$config = require base_path("config/database.php");
+$db = new Database($config["database"]);
 
 $sql = 'SELECT * FROM tutorials';
 $tutorials = $db->query($sql)->getAll();
+
+function setPath($tutorialId)
+{
+    if (in_array($tutorialId, $_SESSION['user']["tutorials_id"])) {
+        return "/tutorials-user/tutorial-user?id=" . $tutorialId;
+    }
+    return "/tutorials/tutorial?id=" . $tutorialId;
+}
 
 
 require view("tutorials.view.php");

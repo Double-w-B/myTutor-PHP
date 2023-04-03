@@ -27,7 +27,7 @@ if (
 <div class="dashboard">
 
     <?php if (isset($_SESSION["signInSuccess"])) : ?>
-        <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) && !$_SESSION['user']['trialEnd'] ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
+        <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
             <?php include base_path("views/partials/trial-reminder.php") ?>
 

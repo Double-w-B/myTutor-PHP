@@ -6,7 +6,7 @@
 </header>
 
 <div class="dashboard">
-    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) && !$_SESSION['user']['trialEnd'] ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
+    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
         <?php include "partials/trial-reminder.php" ?>
 
@@ -25,10 +25,10 @@
                         </div>
                     </div>
 
-                    <form>
-                        <input type="hidden" name="addTutorialIdToDB" value="<?= $tutorial['id'] ?>">
-                        <button type="submit" style='<?= in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "pointer-events: none; box-shadow: none; background-color: #342A7A;" : "" ?>'>
-                            <?= !in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? 'add to my tutors' : 'in progress' ?>
+                    <form action="<?= setPath($tutorial['id']) ?>">
+                        <input type="hidden" name="id" value="<?= $tutorial['id'] ?>">
+                        <button type="submit" style='<?= in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "background-color: #342A7A;" : "" ?>'>
+                            <?= !in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "explore" : "let's learn" ?>
                         </button>
                     </form>
                 </div>
@@ -41,6 +41,5 @@
 
 <?php include "partials/footer.php" ?>
 
-<script type="module" src="./js/tutorials.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/trial-reminder.js"></script>
