@@ -165,10 +165,6 @@ main {
   margin-bottom: 0.5rem;
   color: hsl(248deg, 32%, 49%);
 }
-.dashboard main.home-page section .tutorial-details__content h4 a {
-  text-decoration: none;
-  color: hsl(248deg, 32%, 49%);
-}
 .dashboard main.home-page section .tutorial-details__content p {
   font-size: 0.8rem;
   color: hsl(246deg, 25%, 77%);
@@ -222,7 +218,7 @@ main {
 .dashboard main.home-page section .tutorial form button .loading span {
   top: 15px;
 }
-.dashboard main.home-page section .tutorial button {
+.dashboard main.home-page section .tutorial a {
   width: 100%;
   text-transform: uppercase;
   border-radius: 0.3rem;
@@ -232,21 +228,19 @@ main {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   background-color: hsl(154deg, 59%, 51%);
   transition: 0.25s ease-in-out;
+  background-color: hsl(248deg, 32%, 49%);
   height: 45px;
   margin: auto 0 0 0;
+  display: grid;
+  place-content: center;
 }
-.dashboard main.home-page section .tutorial button:active {
+.dashboard main.home-page section .tutorial a:active {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
-.dashboard main.home-page section .tutorial button:hover {
+.dashboard main.home-page section .tutorial a:hover {
   opacity: 0.9;
 }
-.dashboard main.home-page section .tutorial button.active {
-  pointer-events: none;
-  box-shadow: none;
-  background-color: #342a7a;
-}
-.dashboard main.home-page section .tutorial button .loading span {
+.dashboard main.home-page section .tutorial a .loading span {
   top: 15px;
 }
 
@@ -345,6 +339,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-indent: 1rem;
 }
 .dashboard main.tutorial section p button {
   width: 100%;
@@ -410,6 +405,7 @@ main {
 }
 .dashboard main.tutorial section article p {
   align-items: start;
+  text-indent: 0;
 }
 .dashboard main.tutorial section form {
   width: 100%;
@@ -439,6 +435,34 @@ main {
   opacity: 0.9;
 }
 .dashboard main.tutorial section form button:not(article form button) .loading span {
+  top: 15px;
+}
+.dashboard main.tutorial section button:not(article form button) {
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background-color: hsl(154deg, 59%, 51%);
+  transition: 0.25s ease-in-out;
+  background-color: hsl(248deg, 32%, 49%);
+  width: 40%;
+  height: 45px;
+  display: block;
+  margin: 3rem auto 0 auto;
+}
+.dashboard main.tutorial section button:not(article form button):active {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.dashboard main.tutorial section button:not(article form button):hover {
+  opacity: 0.9;
+}
+.dashboard main.tutorial section button:not(article form button).delete {
+  background-color: hsl(0deg, 100%, 74%);
+}
+.dashboard main.tutorial section button:not(article form button) .loading span {
   top: 15px;
 }
 

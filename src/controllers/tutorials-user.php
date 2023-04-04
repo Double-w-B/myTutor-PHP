@@ -38,4 +38,4 @@ $tutorials = $db->query($sql)->getAll();
 $userTutorials = array_filter($tutorials, fn ($tutorial) => in_array($tutorial['id'], $_SESSION['user']['tutorials_id']));
 
 
-require view("my-tutorials.view.php");
+require view("tutorials-user.view.php");

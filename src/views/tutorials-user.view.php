@@ -6,7 +6,7 @@
 </header>
 
 <div class="dashboard">
-    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) && !$_SESSION['user']['trialEnd'] ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
+    <main class="home-page" style='<?= isset($_SESSION["trialReminder"]) ? "height:calc(100% - 50px - 1rem);" : "" ?>'>
 
         <?php include "partials/trial-reminder.php" ?>
 
@@ -19,9 +19,7 @@
                         </picture>
                         <div class="tutorial-details__content">
                             <h4>
-                                <a href="/my-tutorials/user-tutorial?id=<?= $tutorial['id'] ?>">
-                                    <?= $tutorial['title'] ?>
-                                </a>
+                                <?= $tutorial['title'] ?>
                             </h4>
 
                             <p>Created by <?= $tutorial['created_by'] ?></p>
@@ -31,7 +29,9 @@
                             </div>
                         </div>
 
-                        <button type="button">remove from my tutors</button>
+                        <a href="/tutorials-user/tutorial-user?id=<?= $tutorial['id'] ?>">
+                            let's learn
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </section>
@@ -52,8 +52,7 @@
 </div>
 
 <?php include "partials/footer.php" ?>
-<?php include "partials/modal.php" ?>
 
-<script type="module" src="./js/my-tutorials.js"></script>
+
 <script src="./js/menu.js"></script>
 <script src="./js/trial-reminder.js"></script>

@@ -13,7 +13,6 @@ if (in_array($id, $_SESSION['user']['tutorials_id'])) {
 $config = require base_path("config/database.php");
 $db = new Database($config["database"]);
 
-
 $sql = "SELECT * FROM tutorials_sections WHERE tutorial_id = ? ORDER BY position";
 $sections = $db->query($sql, [$id])->getAll();
 

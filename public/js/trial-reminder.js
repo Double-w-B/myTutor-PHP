@@ -9,7 +9,7 @@ async function handleReminder(e) {
   requestOptions.body = formData;
 
   try {
-    await fetch("/my-tutorials", requestOptions);
+    await fetch("/tutorials-user", requestOptions);
     trialReminderForm.closest("article").remove();
     main.removeAttribute("style");
   } catch (error) {

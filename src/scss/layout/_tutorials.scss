@@ -125,11 +125,6 @@
             h4 {
               margin-bottom: 0.5rem;
               color: $accent-blue;
-
-              a {
-                text-decoration: none;
-                color: $accent-blue;
-              }
             }
 
             p {
@@ -181,16 +176,13 @@
             }
           }
 
-          button {
+          a {
             @include shared.button;
+            background-color: $accent-blue;
             height: 45px;
             margin: auto 0 0 0;
-
-            &.active {
-              pointer-events: none;
-              box-shadow: none;
-              background-color: #342a7a;
-            }
+            display: grid;
+            place-content: center;
 
             .loading span {
               top: 15px;

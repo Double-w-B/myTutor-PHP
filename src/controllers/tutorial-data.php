@@ -2,9 +2,6 @@
 
 use Classes\Database;
 
-if (str_contains($_SERVER['REQUEST_URI'], "/tutorials/tutorial-data")) {
-    abort();
-}
 
 $config = require base_path("config/database.php");
 $db = new Database($config["database"]);

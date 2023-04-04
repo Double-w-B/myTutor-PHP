@@ -8,15 +8,23 @@
 <div class="dashboard">
     <main class="tutorial">
 
-        <?php include "partials/trial-reminder.php" ?>
+        <article class="trial">
+            <p>
+                <span>Good choice!</span> May the force be with you!
+            </p>
+            <form>
+                <input type="hidden" name="trial-close-btn" value="">
+                <button type="submit"><img src="../assets/icon-close.svg" alt="" /></button>
+            </form>
+        </article>
 
         <section>
-
             <picture>
                 <img src="<?= $tutorial['poster'] ?>" alt="">
             </picture>
 
             <h1><?= $tutorial['title'] ?></h1>
+            <p>created by <?= $tutorial['created_by'] ?></p>
             <p>
                 <?php if (strlen($tutorial['tutorial_desc']) > $maxChars) : ?>
                     <span id="desc">
@@ -42,6 +50,8 @@
                 </article>
             <?php endforeach; ?>
 
+            <button class="delete">delete tutorial</button>
+
         </section>
 
     </main>
@@ -49,7 +59,8 @@
 </div>
 
 <?php include "partials/footer.php" ?>
+<?php include "partials/modal.php" ?>
 
-<script type="module" src="../js/tutorial.js"></script>
+<script type="module" src="../js/tutorial-user.js"></script>
 <script src="../js/menu.js"></script>
 <script src="../js/trial-reminder.js"></script>

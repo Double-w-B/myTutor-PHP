@@ -7,9 +7,9 @@ $trialEndTime = $dateTime->diff($userTrialDate)->format("%d");
 
 ?>
 
+<article class="trial">
 
-<?php if ($_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder'])) : ?>
-    <article class="trial">
+    <?php if ($_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder'])) : ?>
         <p>Hey,
             <span><?= ucfirst($_SESSION['user']['name']) ?></span>! Be patient. Study hard and be smart.
         </p>
@@ -17,11 +17,9 @@ $trialEndTime = $dateTime->diff($userTrialDate)->format("%d");
             <input type="hidden" name="trial-close-btn" value="">
             <button type="submit"><img src="../assets/icon-close.svg" alt="" /></button>
         </form>
-    </article>
-<?php endif; ?>
+    <?php endif; ?>
 
-<?php if (!$_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder']) && !$_SESSION['user']['trialEnd']) : ?>
-    <article class=" trial">
+    <?php if (!$_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder']) && !$_SESSION['user']['trialEnd']) : ?>
         <p>Hey,
             <span><?= ucfirst($_SESSION['user']['name']) ?></span>! Free trial ends in
             <span><?= $trialEndTime > 1 ? "$trialEndTime days" : " $trialEndTime day" ?></span>, upgrade your subscription
@@ -31,14 +29,13 @@ $trialEndTime = $dateTime->diff($userTrialDate)->format("%d");
             <input type="hidden" name="trial-close-btn" value="">
             <button type="submit"><img src="../assets/icon-close.svg" alt="" /></button>
         </form>
-    </article>
-<?php endif; ?>
+    <?php endif; ?>
 
-<?php if (!$_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder']) && $_SESSION['user']['trialEnd']) : ?>
-    <article class="trial">
+    <?php if (!$_SESSION['user']['subscription_id'] && isset($_SESSION['trialReminder']) && $_SESSION['user']['trialEnd']) : ?>
         <p>Hey,
             <span><?= ucfirst($_SESSION['user']['name']) ?></span>! Your free trial has ended
             <span><?= $trialEndTime == 0 ? "today" : ($trialEndTime > 1 ? "$trialEndTime days ago" : " $trialEndTime day ago") ?></span>, upgrade your subscription.
         </p>
-    </article>
-<?php endif; ?>
+    <?php endif; ?>
+
+</article>

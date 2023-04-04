@@ -27,8 +27,8 @@
 
                     <form action="<?= setPath($tutorial['id']) ?>">
                         <input type="hidden" name="id" value="<?= $tutorial['id'] ?>">
-                        <button type="submit" style='<?= in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "background-color: #342A7A;" : "" ?>'>
-                            <?= !in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "explore" : "let's learn" ?>
+                        <button type="submit" style='<?= in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "background-color: #6055A5;" : "" ?>'>
+                            <?= !in_array($tutorial['id'], $_SESSION['user']["tutorials_id"]) ? "explore" : "in progress" ?>
                         </button>
                     </form>
                 </div>

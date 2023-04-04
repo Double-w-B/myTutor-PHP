@@ -45,7 +45,7 @@ async function handleSubmitEnrollNow(e) {
 
     setTimeout(() => {
       window.location.assign(`/tutorials-user/tutorial-user?id=${id}`);
-    }, 1000);
+    }, 500);
   } catch (error) {
     console.log(error);
   }
