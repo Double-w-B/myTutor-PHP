@@ -17,10 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
 
     $data = array(
-        'tutorial' => array(
-            'tutorial_desc' => $tutorial['tutorial_desc'],
-        ),
-        'sections' => $sections
+        'tutorial_desc' => $tutorial['tutorial_desc'],
+        'sections' => $sections,
+        'sections_completed' => $_SESSION['tutorial']['sections']
     );
 
     header('Content-Type: application/json');

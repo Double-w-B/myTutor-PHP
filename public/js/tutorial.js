@@ -13,7 +13,7 @@ async function handleOnload() {
   try {
     const response = await fetch(`/tutorials/tutorial-data?id=${id}`);
     const data = await response.json();
-    responseDesc = data.tutorial.tutorial_desc;
+    responseDesc = data.tutorial_desc;
   } catch (error) {
     console.log(error);
   }

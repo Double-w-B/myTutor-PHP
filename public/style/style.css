@@ -316,6 +316,32 @@ main {
   display: block;
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+}
+.dashboard main.tutorial section picture div.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  background: conic-gradient(hsl(0deg, 100%, 74%) 2%, rgb(255, 255, 255) 2%);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+.dashboard main.tutorial section picture div.progress div.percentage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .dashboard main.tutorial section picture img {
   width: 100%;
@@ -424,7 +450,6 @@ main {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   background-color: hsl(154deg, 59%, 51%);
   transition: 0.25s ease-in-out;
-  background-color: hsl(248deg, 32%, 49%);
   width: 40%;
   height: 45px;
 }

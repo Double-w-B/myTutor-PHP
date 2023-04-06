@@ -16,9 +16,12 @@ const modalDeleteButton = modalDeleteTutorial.querySelector("button");
 const modalDeleteForm = modalDeleteTutorial.querySelector("form");
 const modalButtonClose = modalDeleteTutorial.querySelector("img");
 
-const requestOptions = {};
+const progressCircle = document.querySelector(".progress");
+const progressPercentage = document.querySelector(".percentage");
+const userProgress = new utils.UserProgress();
 
-let responseDesc;
+const requestOptions = {};
+let tutorialDescription;
 
 async function handleOnload() {
   try {
@@ -26,7 +29,15 @@ async function handleOnload() {
       `/tutorials-user/tutorial-user-data?id=${tutorialId}`
     );
     const data = await response.json();
-    responseDesc = data.tutorial.tutorial_desc;
+
+    tutorialDescription = data.tutorial_desc;
+
+    userProgress.totalSections = data.sections;
+    userProgress.completedSections = data.sections_completed;
+
+    if (data.sections_completed.length > 0) {
+      userProgress.updateProgress(progressPercentage, progressCircle);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -44,10 +55,10 @@ function handleBackdropClick(e) {
 
 function handleShowMore() {
   if (buttonShowMore.textContent === "Show More") {
-    tutorialDesc.textContent = responseDesc;
+    tutorialDesc.textContent = tutorialDescription;
     buttonShowMore.textContent = "Show Less";
   } else {
-    tutorialDesc.textContent = `${responseDesc.substr(0, 200)} ...`;
+    tutorialDesc.textContent = `${tutorialDescription.substr(0, 250)} ...`;
     buttonShowMore.textContent = "Show More";
   }
 }
@@ -70,9 +81,13 @@ checkButtons.forEach((form) => {
 
       if (button.classList.contains("checked")) {
         button.classList.remove("checked");
+        userProgress.completedSections.pop();
+        userProgress.updateProgress(progressPercentage, progressCircle);
         return;
       }
       button.classList.add("checked");
+      userProgress.completedSections.push(0);
+      userProgress.updateProgress(progressPercentage, progressCircle);
     } catch (error) {
       console.log(error);
     }

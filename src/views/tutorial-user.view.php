@@ -20,6 +20,9 @@
 
         <section>
             <picture>
+                <div class="progress">
+                    <div class="percentage">0%</div>
+                </div>
                 <img src="<?= $tutorial['poster'] ?>" alt="">
             </picture>
 

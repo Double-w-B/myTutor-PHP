@@ -80,6 +80,32 @@
           display: block;
           margin: 0 auto;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          position: relative;
+
+          div.progress {
+            @include shared.centerElements;
+            width: 55px;
+            height: 55px;
+            background-color: $white;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+              rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            background: conic-gradient($primary-red 2%, $white 2%);
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+
+            div.percentage {
+              @include shared.centerElements;
+              width: 45px;
+              height: 45px;
+              font-size: 0.9rem;
+              border-radius: 50%;
+              background-color: $white;
+              box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+                rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            }
+          }
 
           img {
             width: 100%;
@@ -182,7 +208,6 @@
 
           button:not(article form button) {
             @include shared.button;
-            background-color: $accent-blue;
             width: 40%;
             height: 45px;
 
