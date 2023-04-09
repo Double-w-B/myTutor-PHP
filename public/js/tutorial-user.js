@@ -82,11 +82,11 @@ checkButtons.forEach((form) => {
       if (button.classList.contains("checked")) {
         button.classList.remove("checked");
         userProgress.completedSections.pop();
-        userProgress.updateProgress(progressPercentage, progressCircle);
-        return;
+      } else {
+        button.classList.add("checked");
+        userProgress.completedSections.push(0);
       }
-      button.classList.add("checked");
-      userProgress.completedSections.push(0);
+
       userProgress.updateProgress(progressPercentage, progressCircle);
     } catch (error) {
       console.log(error);
